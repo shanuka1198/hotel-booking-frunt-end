@@ -1,0 +1,63 @@
+import axios from "axios";
+import {useEffect, useState} from "react";
+
+function UserData(props) {
+    const token=localStorage.getItem("token");
+
+    if(token == null){
+        window.location.href = "/login"
+    }
+
+    const [name, setName] = useState("");
+
+    const [userFound , setUserFound] = useState(false)
+
+
+
+    //useEffect( function , []   )
+    useEffect(
+        ()=>{
+            const token = localStorage.getItem("token");
+            console.log(token)
+            if (token != null) {
+                axios
+                    .get("http://localhost:5000/api/users/loginUser", {
+                        headers: {
+                            Authorization: "Bearer " + token,
+                            "Content-Type": "application/json",
+                        },
+                    })
+                    .then((res) => {
+                        console.log(res);
+                        setName(res.data.users.firstName + " " + res.data.users.lastName);
+
+                        setUserFound(true)
+                    });
+            }else{
+                setName("")
+            }
+        },[userFound]
+    );
+
+
+    return (
+        <div className="absolute right-8 flex  items-center cursor-pointer mr-2">
+            <img className="rounded-full w-[50px] h-[50px]" src={props.imageLink} />
+            <span className="text-white ml-[3px] text-[15px] r">{name}</span>
+
+            <div className="h-5 text-amber-50 rounded flex items-center justify-center w-20 bg-fuchsia-600 text-center mx-2">
+                <button className="text-[15px]" onClick={() => {
+                    localStorage.removeItem("token")
+                    setUserFound(false)
+                }}>
+                    logout
+                </button>
+            </div>
+
+        </div>
+
+
+    );
+}
+
+export default UserData;

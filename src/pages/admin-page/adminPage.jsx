@@ -1,0 +1,74 @@
+import {Link, Route, Routes} from "react-router-dom";
+import Booking from "../../page/booking.jsx";
+import Category from "../../page/category.jsx";
+import { IoMdBookmark } from "react-icons/io";
+import { BiSolidCategoryAlt } from "react-icons/bi";
+import User from "../../page/user.jsx";
+import { FaUserGroup } from "react-icons/fa6";
+
+function AdminPage(){
+    const token=localStorage.getItem("token");
+
+    if(token == null){
+        window.location.href = "/login"
+    }
+
+
+    return(
+        <>
+            <div className="flex">
+                <div className="relative w-[230px] h-screen bg-fuchsia-800 overflow-y-hidden">
+                    <div className="my-[40px]">
+                        <div>
+                            <img src="https://d17criujoyjthx.cloudfront.net/2016/02/logo.svg"/>
+                        </div>
+                        <ul>
+                            <Link to="/admin/booking">
+                                <div
+                                    className="w-full h-10 flex justify-center items-center rounded-l-2xl my-8 bg-fuchsia-800 hover:bg-fuchsia-200 cursor-pointer">
+                                    <li className="flex items-center"><IoMdBookmark />Booking</li>
+                                </div>
+                            </Link>
+
+                            <Link to="/admin/category">
+                                <div
+                                    className="w-full h-10 flex justify-center items-center rounded-l-2xl my-8 bg-fuchsia-800 hover:bg-fuchsia-200 cursor-pointer">
+                                    <li  className="flex items-center"><BiSolidCategoryAlt />Categories</li>
+                                </div>
+                            </Link>
+
+                            <div className="w-full h-10 flex justify-center items-center rounded-l-2xl my-8 bg-fuchsia-800 hover:bg-fuchsia-200 cursor-pointer">
+                                <li>Room</li>
+                            </div>
+
+                            <Link to="/admin/user">
+                                <div className="w-full h-10 flex justify-center items-center rounded-l-2xl my-8 bg-fuchsia-800 hover:bg-fuchsia-200 cursor-pointer">
+                                    <li className="flex items-center"><FaUserGroup />Users</li>
+                                 </div>
+                            </Link>
+
+                            <div className="w-full h-10 flex justify-center items-center rounded-l-2xl my-8 bg-fuchsia-800 hover:bg-fuchsia-200 cursor-pointer">
+                                <li>FeedBack</li>
+                            </div>
+                            <div className="w-full h-10 flex justify-center items-center rounded-l-2xl my-8 bg-fuchsia-800 hover:bg-fuchsia-200 cursor-pointer">
+                                <li>Gallery</li>
+                            </div>
+                        </ul>
+                    </div>
+
+                </div>
+                <div className="w-full h-screen bg-white overflow-y-scroll">
+                    <Routes path="/*">
+                        <Route path="/booking" element={<Booking/>}></Route>
+                        <Route path="/category" element={<Category/>}></Route>
+                        <Route path="/user" element={<User/>}></Route>
+
+                    </Routes>
+                </div>
+            </div>
+
+        </>
+    )
+}
+
+export default AdminPage;
