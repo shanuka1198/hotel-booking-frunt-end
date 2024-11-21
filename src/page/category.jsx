@@ -3,14 +3,14 @@ import axios from "axios";
 import EditCategory from "./edit-category.jsx";
 import { IoIosAddCircle } from "react-icons/io";
 import AddCategory from "./add-category.jsx";
+import {RiEdit2Fill} from "react-icons/ri";
+import { RiDeleteBin5Fill } from "react-icons/ri";
 
 
 function Category(){
     const token=localStorage.getItem("token");
 
-    if(token == null){
-        window.location.href = "/login"
-    }
+
 
 
     const [categories,setCategory]=useState([]);
@@ -35,9 +35,9 @@ function Category(){
 
 
     function deleteCategory(name){
-        axios.delete(import.meta.env.VITE_BACKEND_URL+"/api/category/"+name ,{
+        axios.delete("/api/category/"+name ,{
             headers:{
-                Authorization:"Bearer "+token
+                Authorization:"Bearer " +token
             }
         }).then(()=>{
             setCategoryIsLoaded(false)
@@ -97,18 +97,18 @@ function Category(){
                                     "No Image"
                                 )}
                             </td>
-                        <td className="py-3 px-6 text-left">
-                            <div>
+                        <td >
+                            <div className="py-3 px-6 text-left flex ">
                                 <button onClick={() => {
                                     setActiveCategory(category)
                                     modelOpen();
                                 }}
-                                        className="w-12 h-5 bg-fuchsia-900 text-amber-50 rounded-2xl hover:bg-fuchsia-700">Edit
+                                        className="w-7 h-5 bg-fuchsia-900 text-amber-50 rounded-xl hover:bg-fuchsia-700"><span className="flex justify-center"><RiEdit2Fill /></span>
                                 </button>
                                 <button onClick={() => {
                                     deleteCategory(category.name)
                                 }}
-                                        className="w-[70px] h-5 bg-red-700 mx-5 text-amber-50 rounded-2xl hover:bg-red-600">Delete
+                                        className="w-7 h-5 bg-red-700 mx-5 text-amber-50 rounded-2xl hover:bg-red-600"><span className="flex justify-center"><RiDeleteBin5Fill/></span>
                                 </button>
                             </div>
                         </td>

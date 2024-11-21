@@ -1,8 +1,14 @@
 import {useState} from "react";
 import axios from "axios";
+import {RiDeleteBin5Fill, RiEdit2Fill} from "react-icons/ri";
 
 
 function Gallery(){
+    const token=localStorage.getItem("token");
+
+    if(token == null){
+        window.location.href = "/login"
+    }
 
     const[image, setImage]=useState([]);
 
@@ -10,7 +16,27 @@ function Gallery(){
             (res)=>{
                 setImage(res.data.list)
             }
-        )
+        ).catch((err)=>{
+            console.log(err);
+    })
+
+
+    function deleteImages(name){
+
+        if (!token) {
+            console.error("No token found. Please log in.");
+            return;
+        }
+
+        axios.delete(import.meta.env.VITE_BACKEND_URL+"/api/gallery/"+ name)
+            .then((res) => {
+                console.log(res.data);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+
+    }
 
 
     return(
@@ -37,15 +63,20 @@ function Gallery(){
                             <td className="py-3 px-6 text-left">
                                 <div>
                                     <button
-                                        className="w-12 h-5 bg-fuchsia-900 text-amber-50 rounded-2xl hover:bg-fuchsia-700">Edit
+                                        className="w-7 h-5 bg-fuchsia-900 text-amber-50 rounded-xl hover:bg-fuchsia-700">
+                                        <span className="flex justify-center"><RiEdit2Fill/></span>
                                     </button>
-                                    <button
-                                        className="w-[70px] h-5 bg-red-700 mx-5 text-amber-50 rounded-2xl hover:bg-red-600">Delete
+                                    <button onClick={() => {
+                                        deleteImages(images.name)
+                                    }}
+                                            className="w-7 h-5 bg-red-700 mx-5 text-amber-50 rounded-2xl hover:bg-red-600">
+                                        <span className="flex justify-center"><RiDeleteBin5Fill/></span>
                                     </button>
                                 </div>
                             </td>
                         </tr>
                     ))}
+
                     </tbody>
                 </table>
             </div>

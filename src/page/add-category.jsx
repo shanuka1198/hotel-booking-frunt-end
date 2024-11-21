@@ -2,6 +2,7 @@ import {IoIosCloseCircle} from "react-icons/io";
 import axios from "axios";
 import {useState} from "react";
 import {uploadSupabase} from "../util/supabase.js";
+import { RiEdit2Fill } from "react-icons/ri";
 
 function AddCategory(props){
 

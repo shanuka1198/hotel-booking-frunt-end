@@ -1,7 +1,7 @@
 import {createClient} from "@supabase/supabase-js";
 
-const supabaseUrl=import.meta.env.SUPABASE_URL;
-const supabaseKey=import.meta.env.SUPABASE_KEY;
+const supabaseUrl="https://pqohiicmyjhyjgwqwuoo.supabase.co";
+const supabaseKey="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBxb2hpaWNteWpoeWpnd3F3dW9vIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzIwODY1NDQsImV4cCI6MjA0NzY2MjU0NH0.Mkfv5kpbTgp3--Y7n-bRfZVaIeozxPp5i6yHdZGe8rI";
 
 const supabase=createClient(supabaseUrl,supabaseKey);
 export function uploadSupabase(file){

@@ -1,5 +1,6 @@
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import axios from "axios";
+import {RiDeleteBin5Fill} from "react-icons/ri";
 
 
 
@@ -76,9 +77,10 @@ function User(){
                                 <div className="">
 
                                     <button onClick={() => {
-                                            deleteCategory(users.username);
+                                        deleteCategory(users.username);
                                     }}
-                                            className="w-[70px] h-5 bg-red-700 mx-5 text-amber-50 rounded-2xl hover:bg-red-600">Delete
+                                            className="w-7 h-5 bg-red-700 mx-5 text-amber-50 rounded-2xl hover:bg-red-600">
+                                        <span className="flex justify-center"><RiDeleteBin5Fill/></span>
                                     </button>
                                 </div>
                             </td>
