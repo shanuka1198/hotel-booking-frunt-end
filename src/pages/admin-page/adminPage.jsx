@@ -5,6 +5,8 @@ import { IoMdBookmark } from "react-icons/io";
 import { BiSolidCategoryAlt } from "react-icons/bi";
 import User from "../../page/user.jsx";
 import { FaUserGroup } from "react-icons/fa6";
+import Gallery from "../../page/gallery.jsx";
+import { RiGalleryFill } from "react-icons/ri";
 
 function AdminPage(){
     const token=localStorage.getItem("token");
@@ -50,9 +52,12 @@ function AdminPage(){
                             <div className="w-full h-10 flex justify-center items-center rounded-l-2xl my-8 bg-fuchsia-800 hover:bg-fuchsia-200 cursor-pointer">
                                 <li>FeedBack</li>
                             </div>
-                            <div className="w-full h-10 flex justify-center items-center rounded-l-2xl my-8 bg-fuchsia-800 hover:bg-fuchsia-200 cursor-pointer">
-                                <li>Gallery</li>
-                            </div>
+
+                            <Link to="/admin/gallery">
+                                <div className="w-full h-10 flex justify-center items-center rounded-l-2xl my-8 bg-fuchsia-800 hover:bg-fuchsia-200 cursor-pointer">
+                                    <RiGalleryFill /><li>Gallery</li>
+                                </div>
+                            </Link>
                         </ul>
                     </div>
 
@@ -62,7 +67,7 @@ function AdminPage(){
                         <Route path="/booking" element={<Booking/>}></Route>
                         <Route path="/category" element={<Category/>}></Route>
                         <Route path="/user" element={<User/>}></Route>
-
+                        <Route path="/gallery" element={<Gallery/>}></Route>
                     </Routes>
                 </div>
             </div>

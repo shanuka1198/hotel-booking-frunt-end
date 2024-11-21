@@ -22,7 +22,6 @@ function Category(){
     useEffect(() => {
         if (!categoryIsLoaded){
             axios.get(import.meta.env.VITE_BACKEND_URL+"/api/category").then((res)=>{
-                console.log(res.data.result)
                 setCategory(res.data.result)
                 setCategoryIsLoaded(true);
             }).catch((err)=>{

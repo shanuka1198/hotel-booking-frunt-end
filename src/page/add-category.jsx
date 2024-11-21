@@ -1,14 +1,11 @@
 import {IoIosCloseCircle} from "react-icons/io";
 import axios from "axios";
 import {useState} from "react";
+import {uploadSupabase} from "../util/supabase.js";
 
 function AddCategory(props){
 
 
-    function closeAddCategory(){
-        // eslint-disable-next-line react/prop-types
-        props.closeModel();
-    }
 
 
     const [name,setName] = useState("");
@@ -22,6 +19,18 @@ function AddCategory(props){
 
     const [image, setImage] = useState(null);
 
+
+
+    function closeAddCategory(){
+        // eslint-disable-next-line react/prop-types
+        props.closeModel();
+    }
+
+    function imageUpload(){
+        uploadSupabase(image).then((res)=>{
+            console.log(res);
+        })
+    }
 
     const token=localStorage.getItem("token");
 
@@ -115,13 +124,14 @@ function AddCategory(props){
                             <div>
                                 <label htmlFor="image" className="block text-gray-700 font-semibold">Image
                                     URL</label>
-                                <input type="text" id="image" name="image"
+                                <input type="file" id="image" name="image"
                                     // placeholder={image}
                                        onChange={(e)=>{
-                                           setImage(e.target.value)
+                                           setImage(e.target.files[0])
                                        }}
                                        className="w-full px-4 py-2 border border-fuchsia-700 rounded-md focus:outline-none focus:ring-2 focus:ring-fuchsia-700"/>
                             </div>
+                            <button onClick={imageUpload}>submit</button>
 
 
                             <div className="text-center">

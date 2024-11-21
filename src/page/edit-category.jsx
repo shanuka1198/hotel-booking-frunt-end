@@ -1,6 +1,7 @@
 import { IoIosCloseCircle } from "react-icons/io";
-import { useState} from "react";
+import {useState} from "react";
 import axios from "axios";
+// import {uploadSupabase} from "../util/supabase.js";
 
 
 function EditCategory(props) {
@@ -11,14 +12,17 @@ function EditCategory(props) {
         props.closeModel()
     }
 
-
+    // function imageUpload(){
+    //     uploadSupabase(image).then((res)=>{
+    //         console.log(res);
+    //     })
+    // }
 
     // eslint-disable-next-line react/prop-types
     const [name,setName] = useState(props.name);
 
     // eslint-disable-next-line react/prop-types
-    const [price, setPrice] = useState(props.price); // Make sure price is defined
-
+    const [price, setPrice] = useState(props.price);
     // eslint-disable-next-line react/prop-types
     const [features, setFeatures] = useState(props.features);
 
@@ -27,33 +31,30 @@ function EditCategory(props) {
 
     const [image, setImage] = useState(null);
 
-
     function updateCategory() {
-
         const token=localStorage.getItem("token");
 
         if(token == null){
             window.location.href = "/login"
         }
 
+        const updatedCategory = {
+            name,
+            price,
+            features,
+            description,
+            image,
+        };
 
-
-            const updatedCategory = {
-                name,
-                price,
-                features,
-                description,
-                image,
-            };
-
-            axios.patch(import.meta.env.VITE_BACKEND_URL+"/api/category/"+name,updatedCategory,{
+        axios.patch(import.meta.env.VITE_BACKEND_URL+"/api/category/"+name,updatedCategory,{
                 headers:{
                     Authorization:"Bearer "+token
                 }
-            }).then(()=>{
+            }).then((res)=>{
 
-                // eslint-disable-next-line react/prop-types
-             props.refresh();
+                console.log(res);
+                //eslint-disable-next-line react/prop-types
+              props.refresh();
 
             }).catch((err)=>{
                 console.log(err)
@@ -77,21 +78,25 @@ function EditCategory(props) {
 
                         {
                             <form
-                                // key={name}
+                                key={name}
                                 id="categoryForm" className="space-y-1 my-1 w-[500px]">
 
                                 <div>
                                     <label htmlFor="name" className="block text-gray-700 font-semibold">Name</label>
                                     <input type="text" id="name" name="name"
                                            className="w-full px-2 py-1  border border-fuchsia-700 rounded-md focus:outline-none focus:ring-2 focus:ring-fuchsia-700"
-                                           value={name} onChange={(e)=>{setName(e.target.value)}}
+                                           value={name} onChange={(e) => {
+                                        setName(e.target.value)
+                                    }}
                                            required/>
                                 </div>
 
 
                                 <div>
                                     <label htmlFor="price" className="block text-gray-700 font-semibold">Price</label>
-                                    <input type="text" id="price" name="price" value={price} onChange={(e)=>{setPrice(e.target.value)}}
+                                    <input type="text" id="price" name="price" value={price} onChange={(e) => {
+                                        setPrice(e.target.value)
+                                    }}
                                            className="w-full px-4 py-2 border border-fuchsia-700 rounded-md focus:outline-none focus:ring-2 focus:ring-fuchsia-700"
 
                                            required/>
@@ -102,7 +107,9 @@ function EditCategory(props) {
                                     <label htmlFor="features"
                                            className="block text-gray-700 font-semibold">Features</label>
                                     <input type="text" id="features" name="features"
-                                           value={features} onChange={(e)=>{setFeatures(e.target.value)}}
+                                           value={features} onChange={(e) => {
+                                        setFeatures(e.target.value)
+                                    }}
                                            className="w-full px-4 py-2 border border-fuchsia-700 rounded-md focus:outline-none focus:ring-2 focus:ring-fuchsia-700"
                                            required/>
                                     <small className="text-gray-500">Enter features separated by commas (e.g., WiFi, Air
@@ -114,25 +121,26 @@ function EditCategory(props) {
                                     <label htmlFor="description"
                                            className="block text-gray-700 font-semibold">Description</label>
                                     <textarea id="description" name="description" rows="4"
-                                              value={description} onChange={(e)=>{setDescription(e.target.value)}}
+                                              value={description} onChange={(e) => {
+                                        setDescription(e.target.value)
+                                    }}
                                               className="w-full px-4 py-2 border border-fuchsia-700 rounded-md focus:outline-none focus:ring-2 focus:ring-fuchsia-700"
                                               required></textarea>
                                 </div>
 
-
                                 <div>
                                     <label htmlFor="image" className="block text-gray-700 font-semibold">Image
                                         URL</label>
-                                    <input type="text" id="image" name="image"
-                                           // placeholder={image}
+                                    <input type="file" id="image" name="image"
+                                           onChange={(e) => {
+                                               setImage(e.target.files[0])
+                                           }}
                                            className="w-full px-4 py-2 border border-fuchsia-700 rounded-md focus:outline-none focus:ring-2 focus:ring-fuchsia-700"/>
                                 </div>
-
-
                                 <div className="text-center">
                                     <button onClick={() => {
                                         updateCategory()
-                                    }} type="submit"
+                                    }}
                                             className="w-full my-5 bg-fuchsia-900 text-white font-bold py-2 rounded-md hover:bg-fuchsia-700 focus:outline-none focus:ring-2 focus:ring-fuchsia-500">Edit
                                         Category
                                     </button>
@@ -145,7 +153,9 @@ function EditCategory(props) {
                 </div>
             </>
         )
- }
-// }
+}
+
+
 
 export default EditCategory;
+
