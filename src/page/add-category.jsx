@@ -1,8 +1,9 @@
 import {IoIosCloseCircle} from "react-icons/io";
 import axios from "axios";
 import {useState} from "react";
-import {uploadSupabase} from "../util/supabase.js";
-import { RiEdit2Fill } from "react-icons/ri";
+import {uploadSupabase,supabase} from "../util/supabase.js";
+
+
 
 function AddCategory(props){
 
@@ -12,7 +13,7 @@ function AddCategory(props){
     const [name,setName] = useState("");
 
 
-    const [price, setPrice] = useState(""); // Make sure price is defined
+    const [price, setPrice] = useState("");
 
     const [features, setFeatures] = useState("");
 
@@ -20,36 +21,45 @@ function AddCategory(props){
 
     const [image, setImage] = useState(null);
 
+    const [imageLink, setImageLink] = useState(null);
 
+    const token=localStorage.getItem("token");
 
     function closeAddCategory(){
         // eslint-disable-next-line react/prop-types
         props.closeModel();
     }
 
+
+
     function imageUpload(){
         uploadSupabase(image).then((res)=>{
-            console.log(res);
+                console.log(res)
         })
+        const url=supabase.storage.from("images").getPublicUrl(image.name);
+        setImageLink(url.data.publicUrl);
+        console.log(url.data.publicUrl);
+
     }
 
-    const token=localStorage.getItem("token");
+
 
     const category={
         name,
         price,
         features,
         description,
-        image,
+        image:imageLink
     };
-
     function createCategory(){
         axios.post(import.meta.env.VITE_BACKEND_URL+"/api/category",category,{
             headers:{
                 Authorization:"Bearer "+token
             }
-        }).then(()=>{
+        }).then((result)=>{
+            console.log(imageLink)
             console.log("created")
+            console.log(result);
         }).catch(()=>{
             console.log("can't created")
         })
@@ -71,6 +81,10 @@ function AddCategory(props){
                     {
                         <form
                             // key={name}
+                            onSubmit={(e) => {
+                                createCategory()
+
+                        }}
                             id="categoryForm" className="space-y-1 my-1 w-[500px]">
 
                             <div>
@@ -132,12 +146,9 @@ function AddCategory(props){
                                        }}
                                        className="w-full px-4 py-2 border border-fuchsia-700 rounded-md focus:outline-none focus:ring-2 focus:ring-fuchsia-700"/>
                             </div>
-                            <button onClick={imageUpload}>submit</button>
-
-
                             <div className="text-center">
-                                <button onClick={() => {
-                                    createCategory()
+                                <button onClick={()=>{
+                                    imageUpload()
                                 }} type="submit"
                                         className="w-full my-5 bg-fuchsia-900 text-white font-bold py-2 rounded-md hover:bg-fuchsia-700 focus:outline-none focus:ring-2 focus:ring-fuchsia-500">Submit
                                     Category

@@ -1,22 +1,11 @@
 import { IoIosCloseCircle } from "react-icons/io";
 import {useState} from "react";
 import axios from "axios";
-// import {uploadSupabase} from "../util/supabase.js";
+import {uploadSupabase,supabase} from "../util/supabase.js";
+
 
 
 function EditCategory(props) {
-
-
-    function closeModel() {
-        // eslint-disable-next-line react/prop-types
-        props.closeModel()
-    }
-
-    // function imageUpload(){
-    //     uploadSupabase(image).then((res)=>{
-    //         console.log(res);
-    //     })
-    // }
 
     // eslint-disable-next-line react/prop-types
     const [name,setName] = useState(props.name);
@@ -31,6 +20,24 @@ function EditCategory(props) {
 
     const [image, setImage] = useState(null);
 
+    const [imageLink,setImageLink]=useState(null);
+
+    function closeModel() {
+        // eslint-disable-next-line react/prop-types
+        props.closeModel()
+    }
+
+    function imageUpload(){
+        uploadSupabase(image).then((res)=>{
+            console.log(res)
+        })
+        const url=supabase.storage.from("images").getPublicUrl(image.name);
+        setImageLink(url.data.publicUrl);
+        console.log(imageLink)
+
+
+    }
+
     function updateCategory() {
         const token=localStorage.getItem("token");
 
@@ -43,18 +50,19 @@ function EditCategory(props) {
             price,
             features,
             description,
-            image,
+            image:imageLink
         };
 
-        axios.patch(import.meta.env.VITE_BACKEND_URL+"/api/category/"+name,updatedCategory,{
+
+            axios.put(import.meta.env.VITE_BACKEND_URL+"/api/category/"+name,updatedCategory,{
                 headers:{
-                    Authorization:"Bearer "+token
+                    Authorization:"Bearer " + token
                 }
             }).then((res)=>{
-
+                console.log(imageLink)
                 console.log(res);
                 //eslint-disable-next-line react/prop-types
-              props.refresh();
+                props.refresh();
 
             }).catch((err)=>{
                 console.log(err)
@@ -79,6 +87,10 @@ function EditCategory(props) {
                         {
                             <form
                                 key={name}
+                                onSubmit={() => {
+                                    updateCategory()
+
+                                }}
                                 id="categoryForm" className="space-y-1 my-1 w-[500px]">
 
                                 <div>
@@ -138,9 +150,9 @@ function EditCategory(props) {
                                            className="w-full px-4 py-2 border border-fuchsia-700 rounded-md focus:outline-none focus:ring-2 focus:ring-fuchsia-700"/>
                                 </div>
                                 <div className="text-center">
-                                    <button onClick={() => {
-                                        updateCategory()
-                                    }}
+                                    <button onClick={()=>{
+                                        imageUpload()
+                                    }} type="submit"
                                             className="w-full my-5 bg-fuchsia-900 text-white font-bold py-2 rounded-md hover:bg-fuchsia-700 focus:outline-none focus:ring-2 focus:ring-fuchsia-500">Edit
                                         Category
                                     </button>

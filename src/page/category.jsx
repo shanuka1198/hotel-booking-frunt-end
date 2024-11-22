@@ -35,9 +35,9 @@ function Category(){
 
 
     function deleteCategory(name){
-        axios.delete("/api/category/"+name ,{
+        axios.delete(import.meta.env.VITE_BACKEND_URL+"/api/category/"+name,{
             headers:{
-                Authorization:"Bearer " +token
+                Authorization:"Bearer " + token
             }
         }).then(()=>{
             setCategoryIsLoaded(false)
@@ -76,8 +76,8 @@ function Category(){
 
                     {categories.map((category,index)=>(
                         <tr key={index} className="border-b border-gray-200 hover:bg-gray-100">
-                        <td className="py-3 px-6 text-left whitespace-nowrap">{category.name}</td>
-                        <td className="py-3 px-6 text-left">{category.price}</td>
+                            <td className="py-3 px-6 text-left whitespace-nowrap">{category.name}</td>
+                            <td className="py-3 px-6 text-left">{category.price}</td>
                             <td className="py-3 px-6 text-left">
                                 <ul>
                                     {category.features.map((feature, i) => (
@@ -97,21 +97,23 @@ function Category(){
                                     "No Image"
                                 )}
                             </td>
-                        <td >
-                            <div className="py-3 px-6 text-left flex ">
-                                <button onClick={() => {
-                                    setActiveCategory(category)
-                                    modelOpen();
-                                }}
-                                        className="w-7 h-5 bg-fuchsia-900 text-amber-50 rounded-xl hover:bg-fuchsia-700"><span className="flex justify-center"><RiEdit2Fill /></span>
-                                </button>
-                                <button onClick={() => {
-                                    deleteCategory(category.name)
-                                }}
-                                        className="w-7 h-5 bg-red-700 mx-5 text-amber-50 rounded-2xl hover:bg-red-600"><span className="flex justify-center"><RiDeleteBin5Fill/></span>
-                                </button>
-                            </div>
-                        </td>
+                            <td>
+                                <div className="py-3 px-6 text-left flex ">
+                                    <button onClick={() => {
+                                        setActiveCategory(category)
+                                        modelOpen();
+                                    }}
+                                            className="w-7 h-5 bg-fuchsia-900 text-amber-50 rounded-xl hover:bg-fuchsia-700">
+                                        <span className="flex justify-center"><RiEdit2Fill/></span>
+                                    </button>
+                                    <button onClick={() => {
+                                        deleteCategory(category.name)
+                                    }}
+                                            className="w-7 h-5 bg-red-700 mx-5 text-amber-50 rounded-2xl hover:bg-red-600">
+                                        <span className="flex justify-center"><RiDeleteBin5Fill/></span>
+                                    </button>
+                                </div>
+                            </td>
 
                         </tr>
                     ))}
@@ -119,7 +121,7 @@ function Category(){
                     </tbody>
                 </table>
                 </div>
-            <div className="fixed my-[120px] right-20">
+            <div className="fixed bottom-32 right-32">
                 <button onClick={()=>{
                     addModelOpen();
                 }} className="flex rounded-2xl text-6xl text-fuchsia-950 hover:text-fuchsia-800 shadow shadow-black"><IoIosAddCircle /></button>

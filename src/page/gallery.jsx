@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import axios from "axios";
 import {RiDeleteBin5Fill, RiEdit2Fill} from "react-icons/ri";
 
@@ -11,14 +11,25 @@ function Gallery(){
     }
 
     const[image, setImage]=useState([]);
+    const [imagesLoaded,setImageLoaded]=useState(false);
 
-    axios.get(import.meta.env.VITE_BACKEND_URL+"/api/gallery").then(
-            (res)=>{
-                setImage(res.data.list)
-            }
-        ).catch((err)=>{
-            console.log(err);
-    })
+    useEffect(() => {
+        if (!imagesLoaded){
+            axios.get(import.meta.env.VITE_BACKEND_URL+"/api/gallery").then(
+                (res)=>{
+                    setImage(res.data.list)
+                    setImageLoaded(true)
+                }
+            ).catch((err)=>{
+                console.log(err);
+            })
+        }else{
+            setImageLoaded(false)
+        }
+
+    }, [imagesLoaded],token);
+
+
 
 
     function deleteImages(name){
@@ -28,8 +39,13 @@ function Gallery(){
             return;
         }
 
-        axios.delete(import.meta.env.VITE_BACKEND_URL+"/api/gallery/"+ name)
+        axios.delete(import.meta.env.VITE_BACKEND_URL+"/api/gallery/"+ name ,{
+            headers:{
+                Authorization:"Bearer " +token
+            }
+        })
             .then((res) => {
+                setImageLoaded(false);
                 console.log(res.data);
             })
             .catch((err) => {
