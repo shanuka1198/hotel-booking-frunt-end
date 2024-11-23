@@ -82,6 +82,7 @@ function AddCategory(props){
                         <form
                             // key={name}
                             onSubmit={(e) => {
+                                e.preventDefault()
                                 createCategory()
 
                         }}

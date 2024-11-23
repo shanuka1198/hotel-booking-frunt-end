@@ -1,17 +1,34 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
 import {RiDeleteBin5Fill, RiEdit2Fill} from "react-icons/ri";
+import EditGallery from "./edit-gallery.jsx";
+import {IoIosAddCircle} from "react-icons/io";
+import AddGallery from "./add-gallery.jsx";
 
 
 function Gallery(){
+
+    const[image, setImage]=useState([]);
+    const [imagesLoaded,setImageLoaded]=useState(false);
+    const [isModelOpen,setIsModelOpen]=useState(false);
+    const [activeGallery,setActiveGallery]=useState(null);
+    const [isAddModelOpen,setIsAddModelOpen]=useState(false);
+
+
     const token=localStorage.getItem("token");
 
     if(token == null){
         window.location.href = "/login"
     }
 
-    const[image, setImage]=useState([]);
-    const [imagesLoaded,setImageLoaded]=useState(false);
+    function modelOPen(){
+        setIsModelOpen(true)
+    }
+
+    function AddModelOpen(){
+        setIsAddModelOpen(true)
+    }
+
 
     useEffect(() => {
         if (!imagesLoaded){
@@ -78,8 +95,11 @@ function Gallery(){
                             </td>
                             <td className="py-3 px-6 text-left">
                                 <div>
-                                    <button
-                                        className="w-7 h-5 bg-fuchsia-900 text-amber-50 rounded-xl hover:bg-fuchsia-700">
+                                    <button onClick={() => {
+                                        setActiveGallery(images);
+                                        modelOPen();
+                                    }}
+                                            className="w-7 h-5 bg-fuchsia-900 text-amber-50 rounded-xl hover:bg-fuchsia-700">
                                         <span className="flex justify-center"><RiEdit2Fill/></span>
                                     </button>
                                     <button onClick={() => {
@@ -92,10 +112,33 @@ function Gallery(){
                             </td>
                         </tr>
                     ))}
-
                     </tbody>
                 </table>
             </div>
+            <div className="fixed bottom-32 right-32">
+                <button onClick={() => {
+                    AddModelOpen();
+                }} className="flex rounded-2xl text-6xl text-fuchsia-950 hover:text-fuchsia-800 shadow shadow-black">
+                    <IoIosAddCircle/></button>
+            </div>
+
+            {
+                isModelOpen && (
+                    <div className="h-[100vh] w-screen fixed top-0 bg-fuchsia-50 opacity-90">
+                        <EditGallery closeModel={() => {
+                            setIsModelOpen(false)
+                        }} name={activeGallery.name} description={activeGallery.description} image={activeGallery.image}/>
+                    </div>
+                )
+            }
+            {
+                isAddModelOpen && (
+                    <div className="h-[100vh] w-screen fixed top-0 bg-fuchsia-50 opacity-90">
+                        <AddGallery closeAddModel={() => {
+                            setIsAddModelOpen(false)}}/>
+                    </div>
+                )
+            }
         </>
     )
 }

@@ -87,7 +87,8 @@ function EditCategory(props) {
                         {
                             <form
                                 key={name}
-                                onSubmit={() => {
+                                onSubmit={(e) => {
+                                    e.preventDefault()
                                     updateCategory()
 
                                 }}
