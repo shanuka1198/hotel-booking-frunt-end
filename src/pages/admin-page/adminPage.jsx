@@ -2,11 +2,12 @@ import {Link, Route, Routes} from "react-router-dom";
 import Booking from "../../page/booking.jsx";
 import Category from "../../page/category.jsx";
 import { IoMdBookmark } from "react-icons/io";
-import { BiSolidCategoryAlt } from "react-icons/bi";
+import {BiSolidCategoryAlt, BiSolidMessageDots} from "react-icons/bi";
 import User from "../../page/user.jsx";
 import { FaUserGroup } from "react-icons/fa6";
 import Gallery from "../../page/gallery.jsx";
 import { RiGalleryFill } from "react-icons/ri";
+import Feedback from "../../page/feedback.jsx";
 
 function AdminPage(){
     const token=localStorage.getItem("token");
@@ -49,9 +50,12 @@ function AdminPage(){
                                  </div>
                             </Link>
 
-                            <div className="w-full h-10 flex justify-center items-center rounded-l-2xl my-8 bg-fuchsia-800 hover:bg-fuchsia-200 cursor-pointer">
-                                <li>FeedBack</li>
-                            </div>
+                            <Link to="/admin/feedback">
+                                <div
+                                    className="w-full h-10 flex justify-center items-center rounded-l-2xl my-8 bg-fuchsia-800 hover:bg-fuchsia-200 cursor-pointer">
+                                    <li className="flex items-center"><BiSolidMessageDots />FeedBack</li>
+                                </div>
+                            </Link>
 
                             <Link to="/admin/gallery">
                                 <div className="w-full h-10 flex justify-center items-center rounded-l-2xl my-8 bg-fuchsia-800 hover:bg-fuchsia-200 cursor-pointer">
@@ -68,6 +72,7 @@ function AdminPage(){
                         <Route path="/category" element={<Category/>}></Route>
                         <Route path="/user" element={<User/>}></Route>
                         <Route path="/gallery" element={<Gallery/>}></Route>
+                        <Route path="/feedback" element={<Feedback/>}></Route>
                     </Routes>
                 </div>
             </div>

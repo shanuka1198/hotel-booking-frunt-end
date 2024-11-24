@@ -45,11 +45,12 @@ function EditGallery(props){
     }
 
     function addGallery(){
-        axios.post(import.meta.env.VITE_BACKEND_URL+"/api/gallery/"+name,imageItem,{
+        axios.post(import.meta.env.VITE_BACKEND_URL+"/api/gallery/",imageItem,{
             headers:{
                 Authorization:"Bearer " + token
             }
         }).then((result)=>{
+            console.log(imageLink);
             console.log(name);
             console.log(result);
         }).catch((err)=>{
