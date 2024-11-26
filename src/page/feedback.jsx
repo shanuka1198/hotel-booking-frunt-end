@@ -1,27 +1,35 @@
 import {RiDeleteBin5Fill} from "react-icons/ri";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import axios from "axios";
-import { BiSolidMessageDots } from "react-icons/bi";
+
 
 function Feedback(){
 
 
         const [feedback,setFeedback]=useState([]);
-
+        const [isFeedbackLoad,setFeedbackLoad]=useState(false)
         const token=localStorage.getItem("token");
 
 
 
-        axios.get(import.meta.env.VITE_BACKEND_URL+"/api/feedback",{
-            headers:{
-                Authorization:"Bearer " + token
-            }
-        }).then((result)=>{
-            console.log(result.data.result);
-            setFeedback(result.data.result)
-        }).catch((err)=>{
-            console.log(err);
-        })
+
+    useEffect(() => {
+        if (!isFeedbackLoad){
+            axios.get(import.meta.env.VITE_BACKEND_URL+"/api/feedback",{
+                headers:{
+                    Authorization:"Bearer " + token
+                }
+            }).then((result)=>{
+                setFeedback(result.data.result);
+                setFeedbackLoad(true);
+            }).catch((err)=>{
+                console.log(err);
+            })
+        }else {
+            setFeedbackLoad(false);
+        }
+
+        }, [isFeedbackLoad, token]);
 
 
 
@@ -31,7 +39,7 @@ function Feedback(){
                 <table className="min-w-full bg-white border border-gray-300 rounded-lg shadow-lg my-10">
                     <thead>
                     <tr className="bg-fuchsia-900 text-white uppercase text-sm leading-normal">
-                        <th className="py-3 px-6 text-left">Email</th>
+                        <th className="py-3 px-6 text-left">UserName</th>
                         <th className="py-3 px-6 text-left">Feedback</th>
                         <th className="py-3 px-6 text-left">Visible</th>
                         <th className="py-3 px-6 text-left">Actions</th>
