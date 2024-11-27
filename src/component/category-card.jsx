@@ -26,7 +26,7 @@ function CategoryCard(){
                             className="w-full h-40 object-cover"
                         />
                         <div className="p-4">
-                            <h1 className="text-lg font-bold text-gray-800">{categorys.name}</h1>
+                            <h1 className="text-lg font-bold  text-fuchsia-900 ">{categorys.name}</h1>
                             <p className="text-sm text-gray-700 mb-4">
                                 Features: <span className="text-gray-600">{categorys.features}</span>
                             </p>

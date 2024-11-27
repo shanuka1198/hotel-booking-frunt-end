@@ -1,5 +1,6 @@
 import axios from "axios";
 import {useEffect, useState} from "react";
+import {Link} from "react-router-dom";
 
 function UserData(props) {
     const token = localStorage.getItem("token");
@@ -45,8 +46,13 @@ function UserData(props) {
             <div className="absolute right-8 flex  items-center mr-2">
                 <div className="flex items-center">
                     <ul className="flex flex-row right-96">
+                        <Link to="/gallery">
                         <li className="mx-5 cursor-pointer text-white font-bold hover:underline">Gallery</li>
-                        <li className="mx-5 cursor-pointer text-white font-bold hover:underline">About Us</li>
+                        </Link>
+
+                        <Link to="/about-us">
+                            <li className="mx-5 cursor-pointer text-white font-bold hover:underline">About Us</li>
+                        </Link>
                     </ul>
                 </div>
                 {/* eslint-disable-next-line react/prop-types */}

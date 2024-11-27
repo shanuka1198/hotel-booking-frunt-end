@@ -3,7 +3,7 @@ function Header(){
     return(
         <>
             <header className='relative h-[100px] flex items-center '>
-                <div className="absolute w-full h-[750px] overflow-hidden">
+                <div className="absolute w-full h-[750px] overflow-hidden eff">
                     <div className="flex animate-slide">
                         <img
                             src="https://codecagon.wordpress.com/wp-content/uploads/2016/03/sri-lanka-anantaya.jpg?w=1920&h=1080&crop=1"
@@ -16,6 +16,7 @@ function Header(){
                             alt="Image 3" className="w-full h-full object-cover flex-shrink-0"/>
                     </div>
                 </div>
+
                 <h1 className='absolute text-amber-50 font-sans text-5xl mx-7'>ANANTAYA Resort and Spa</h1>
                 <Userdata
                     imageLink="https://png.pngtree.com/png-vector/20231019/ourmid/pngtree-user-profile-avatar-png-image_10211467.png"
