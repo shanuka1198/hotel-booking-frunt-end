@@ -8,6 +8,8 @@ import { FaUserGroup } from "react-icons/fa6";
 import Gallery from "../../page/gallery.jsx";
 import { RiGalleryFill } from "react-icons/ri";
 import Feedback from "../../page/feedback.jsx";
+import Rooms from "../../page/rooms.jsx";
+import { MdBedroomChild } from "react-icons/md";
 
 function AdminPage(){
     const token=localStorage.getItem("token");
@@ -40,9 +42,11 @@ function AdminPage(){
                                 </div>
                             </Link>
 
-                            <div className="w-full h-10 flex justify-center items-center rounded-l-2xl my-8 bg-fuchsia-800 hover:bg-fuchsia-200 cursor-pointer">
-                                <li>Room</li>
-                            </div>
+                            <Link to="/admin/rooms">
+                                <div className="w-full h-10 flex justify-center items-center rounded-l-2xl my-8 bg-fuchsia-800 hover:bg-fuchsia-200 cursor-pointer">
+                                    <li className="flex items-center"><MdBedroomChild />Room</li>
+                                </div>
+                            </Link>
 
                             <Link to="/admin/user">
                                 <div className="w-full h-10 flex justify-center items-center rounded-l-2xl my-8 bg-fuchsia-800 hover:bg-fuchsia-200 cursor-pointer">
@@ -73,6 +77,7 @@ function AdminPage(){
                         <Route path="/user" element={<User/>}></Route>
                         <Route path="/gallery" element={<Gallery/>}></Route>
                         <Route path="/feedback" element={<Feedback/>}></Route>
+                        <Route path="/rooms" element={<Rooms/>}></Route>
                     </Routes>
                 </div>
             </div>
