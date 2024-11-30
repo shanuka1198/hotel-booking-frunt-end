@@ -58,7 +58,7 @@ function Rooms(){
                             </td>
                             <td className="py-3 px-6 text-left">
                                 <img
-                                    src="public/2.jpg"
+                                    src={room.photos}
                                     alt="Room Photo"
                                     className="h-16 w-16 object-cover rounded-md"
                                 />

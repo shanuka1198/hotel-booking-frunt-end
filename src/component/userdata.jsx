@@ -1,6 +1,7 @@
 import axios from "axios";
 import {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
+import Menus from "./menus.jsx";
 
 function UserData(props) {
     const token = localStorage.getItem("token");
@@ -44,24 +45,12 @@ function UserData(props) {
         <>
 
             <div className="absolute right-8 flex  items-center mr-2">
-                <div className="flex items-center">
-                    <ul className="flex flex-row right-96">
-                        <Link to="/gallery">
-                        <li className="mx-5 cursor-pointer text-white font-bold hover:underline">Gallery</li>
-                        </Link>
-
-                        <Link to="/about-us">
-                            <li className="mx-5 cursor-pointer text-white font-bold hover:underline">About Us</li>
-                        </Link>
-                    </ul>
-                </div>
-                {/* eslint-disable-next-line react/prop-types */}
                 <img className="rounded-full w-[50px] h-[50px]" src={props.imageLink}/>
                 <span className="text-white ml-[3px] text-[15px] ">{name}</span>
 
                 <div
                     className="h-5 text-amber-50 rounded flex items-center justify-center w-20 bg-fuchsia-600 text-center mx-2">
-                    <button className="text-[15px]" onClick={() => {
+                <button className="text-[15px]" onClick={() => {
                         localStorage.removeItem("token")
                         setUserFound(false)
                     }}>

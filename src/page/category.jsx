@@ -10,14 +10,13 @@ import { RiDeleteBin5Fill } from "react-icons/ri";
 function Category(){
     const token=localStorage.getItem("token");
 
-
-
-
     const [categories,setCategory]=useState([]);
     const [categoryIsLoaded,setCategoryIsLoaded]=useState(false);
     const [isModelOPen,setIsModelOPen]=useState(false);
     const [isAddModelOpen,setIsAddModelOpen]=useState(false);
     const [activeCategory,setActiveCategory]=useState(null);
+
+
 
     useEffect(() => {
         if (!categoryIsLoaded){
@@ -54,6 +53,7 @@ function Category(){
     function addModelOpen(){
         setIsAddModelOpen(true)
     }
+
 
 
     return(

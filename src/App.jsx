@@ -7,6 +7,7 @@ import AddUser from "./page/add-user.jsx";
 import Test from "./component/test.jsx";
 import AboutUs from "./page/about-us.jsx";
 import GalleryUi from "./page/gallery-ui.jsx";
+import RoomClientPage from "./page/room-client-page.jsx";
 
 
 
@@ -23,6 +24,7 @@ function App() {
                   <Route path="/test" element={<Test/>}></Route>
                   <Route path="/about-us" element={<AboutUs/>}></Route>
                   <Route path="/gallery" element={<GalleryUi/>}></Route>
+                  <Route path="/rooms" element={<RoomClientPage/>}></Route>
                   <Route path="/*" element={
                       <div>404</div>
                   }></Route>
