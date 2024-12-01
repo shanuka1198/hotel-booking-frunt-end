@@ -4,6 +4,7 @@ import Userdata from "../../component/userdata.jsx";
 import Menus from "../../component/menus.jsx";
 import {useState} from "react";
 import { RxDoubleArrowDown } from "react-icons/rx";
+import FeaturedRoom from "../../component/featured-room.jsx";
 function HomePage() {
     const token=localStorage.getItem("token");
 
@@ -108,13 +109,19 @@ function HomePage() {
                         </div>
                         <CategoryCard/>
                     </div>
+                    <div className=" my-[250px] w-full h-[600px] bg-fuchsia-300 bg-opacity-50 overflow-hidden">
+                        <div className=" mx-[60px]  flex-col justify-center">
+                            <h1 className="text-2xl text-black font-serif text-end">FEATURED</h1>
+                            <h1 className="text-6xl text-fuchsia-800 font-serif text-end">ROOMS</h1>
+                            <div className="w-full h-0.5 bg-fuchsia-300"></div>
+                        </div>
+                        <div className="absolute w-full p-4 overflow-hidden">
+                            <FeaturedRoom/>
+                        </div>
+                    </div>
                 </div>
-
             )
             }
-
-
-
         </>
     )
 }

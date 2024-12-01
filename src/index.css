@@ -55,6 +55,7 @@ h1, h2, h3, h4, h5, h6 {
     25%, 45% { transform: translateX(-100%); }
     50%, 70% { transform: translateX(-200%); }
     75%, 100% { transform: translateX(0); }
+
 }
 
 .animate-slide {

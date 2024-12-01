@@ -8,6 +8,7 @@ import Test from "./component/test.jsx";
 import AboutUs from "./page/about-us.jsx";
 import GalleryUi from "./page/gallery-ui.jsx";
 import RoomClientPage from "./page/room-client-page.jsx";
+import FeaturedRoom from "./component/featured-room.jsx";
 
 
 
