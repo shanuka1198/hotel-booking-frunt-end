@@ -109,7 +109,7 @@ function HomePage() {
                         </div>
                         <CategoryCard/>
                     </div>
-                    <div className=" my-[250px] w-full h-[600px] bg-fuchsia-300 bg-opacity-50 overflow-hidden">
+                    <div className=" my-[250px] w-full h-[500px] bg-fuchsia-300 rounded-3xl bg-opacity-50 overflow-hidden">
                         <div className=" mx-[60px]  flex-col justify-center">
                             <h1 className="text-2xl text-black font-serif text-end">FEATURED</h1>
                             <h1 className="text-6xl text-fuchsia-800 font-serif text-end">ROOMS</h1>

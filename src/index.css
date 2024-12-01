@@ -61,3 +61,17 @@ h1, h2, h3, h4, h5, h6 {
 .animate-slide {
     animation: slide 20s infinite;
 }
+
+@keyframes card-slide {
+    0%, 10% { transform: translateX(0%); }
+    15%, 25% { transform: translateX(-100%); }
+    35%, 45% { transform: translateX(-200%); }
+    55%, 65% { transform: translateX(-300%); }
+    75%, 85% { transform: translateX(-400%); }
+    90%, 100% { transform: translateX(0%); }
+
+}
+
+.card-animate-slide {
+    animation: card-slide 30s infinite;
+}
