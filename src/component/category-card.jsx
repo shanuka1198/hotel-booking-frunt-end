@@ -33,12 +33,12 @@ function CategoryCard(){
 
     return(
         <>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-6 my-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-6 my-2 ">
                 {category.map((categorys, index) => (
                     <div
                         key={index}
-                        className="bg-white  w-[300px]  h-[380px] shadow-black rounded-lg shadow-lg overflow-hidden mx-auto
-            transition-all duration-300 ease-in-out transform hover:scale-105">
+                        className="bg-white w-[300px]  h-[380px] shadow-black rounded-lg shadow-lg overflow-hidden mx-auto
+                        transition-all duration-300 ease-in-out transform hover:scale-105">
                         <img
                             src={categorys.image}
                             alt="Category Image"

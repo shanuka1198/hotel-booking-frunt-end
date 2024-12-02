@@ -7,9 +7,10 @@ function Rooms(){
     const [rooms,setRooms]=useState([]);
     const [isRoomLoad,setRoomLoad]=useState(false)
     const token=localStorage.getItem("token");
+    // const [isChecked,setIsChecked]=useState();
+    let isChecked;
 
-
-
+    console.log(isChecked)
 
     useEffect(() => {
         if (!isRoomLoad){
@@ -20,6 +21,7 @@ function Rooms(){
             }).then((result)=>{
                 setRooms(result.data.result);
                 setRoomLoad(true);
+
             }).catch((err)=>{
                 console.log(err);
             })
@@ -29,6 +31,31 @@ function Rooms(){
 
     }, [setRoomLoad, token]);
 
+    function deleteFeature(roomId){
+        if (isChecked===false) {
+            axios
+                .delete(import.meta.env.VITE_BACKEND_URL+"/api/featured/"+roomId)
+                .then((result) => {
+                    console.log("Feature deleted:", result);
+                })
+                .catch((err) => {
+                    console.error("Error deleting feature:", err);
+                });
+            return;
+        }
+
+        if (isChecked===true){
+            axios
+                .get(import.meta.env.VITE_BACKEND_URL+"/api/featured/"+roomId)
+                .then((result) => {
+                    console.log("Feature fetched:", result);
+                })
+                .catch((err) => {
+                    console.error("Error fetching feature:", err);
+                });
+            return;
+        }
+    }
 
     return(
         <>
@@ -67,8 +94,25 @@ function Rooms(){
                             <td className="py-3 px-6 text-left">{room.notes}</td>
                             <td className="py-3 px-6 text-left flex">
                                 <div className="py-3 px-6 text-left flex ">
+
+                                    <div className="flex items-center justify-center">
+                                        <label className="relative cursor-pointer">
+                                            <input
+                                                type="checkbox"
+                                                onChange={(e) => {
+                                                   isChecked=e.target.checked;
+                                                    deleteFeature(room.roomId);
+                                                }}
+                                                id="toggle"
+                                                className="sr-only peer"
+                                            />
+                                            <div className="block w-8 h-4 bg-gray-300 rounded-full peer-checked:bg-fuchsia-700"></div>
+                                            <div className="absolute top-0.5 left-0.5 w-3 h-3 bg-white rounded-full transition-transform duration-300 peer-checked:translate-x-4"></div>
+                                        </label>
+                                    </div>
+
                                     <button
-                                        className="w-7 h-5 bg-fuchsia-900 text-amber-50 rounded-xl hover:bg-fuchsia-700">
+                                        className="w-7 mx-3 h-5 bg-fuchsia-900 text-amber-50 rounded-xl hover:bg-fuchsia-700">
                                         <span className="flex justify-center"><RiEdit2Fill/></span>
                                     </button>
                                     <button

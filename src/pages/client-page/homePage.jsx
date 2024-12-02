@@ -5,13 +5,19 @@ import Menus from "../../component/menus.jsx";
 import {useState} from "react";
 import { RxDoubleArrowDown } from "react-icons/rx";
 import FeaturedRoom from "../../component/featured-room.jsx";
+import {useNavigate} from "react-router-dom";
+
 function HomePage() {
     const token=localStorage.getItem("token");
-
+    const navigate=useNavigate();
     const[isCardLoad,setIsCardLoad]=useState(false);
 
     if(token == null){
         window.location.href = "/login"
+    }
+
+    function navigateContactus(){
+        navigate("/contact-us")
     }
 
     return (
@@ -83,7 +89,9 @@ function HomePage() {
                         <button onClick={()=>{
                             setIsCardLoad(true);
                         }} className="w-[150px] h-9 text-xs border hover:scale-105 duration-300 ease-in-out transform rounded text-blue-700 bg-white border-white">Explore Rooms</button>
-                        <button className=" mx-3 w-[100px] hover:animate-none hover:scale-105 duration-300 ease-in-out transform rounded-2xl text-white font-bold text-xs h-9 border-2 animate-pulse underline">Contact Us</button>
+                        <button onClick={()=>{
+                            navigateContactus();
+                        }} className=" mx-3 w-[100px] hover:animate-none hover:scale-105 duration-300 ease-in-out transform rounded-2xl text-white font-bold text-xs h-9 border-2 animate-pulse underline">Contact Us</button>
                     </div>
 
                     {isCardLoad && (
