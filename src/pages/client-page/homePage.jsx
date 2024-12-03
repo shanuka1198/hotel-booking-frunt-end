@@ -26,7 +26,7 @@ function HomePage() {
                 <Header/>
                 <div className="absolute w-full top-1 h-full flex flex-col ">
 
-                    <div className="relative w-full">
+                    <div className="relative  bg-black">
                         <div className="absolute flex justify-center items-center w-full p-6">
                             <Menus/>
                             <Userdata

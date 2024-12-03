@@ -1,35 +1,37 @@
 import {RiDeleteBin5Fill, RiEdit2Fill} from "react-icons/ri";
 import {useEffect, useState} from "react";
 import axios from "axios";
+import RoomEdit from "./room-edit.jsx";
+
+
 
 function Rooms(){
 
     const [rooms,setRooms]=useState([]);
     const [isRoomLoad,setRoomLoad]=useState(false)
+    const [isRoomEditModelOpen,setIsRoomEditModelOpen]=useState(false);
     const token=localStorage.getItem("token");
-    // const [isChecked,setIsChecked]=useState();
+
     let isChecked;
 
     console.log(isChecked)
 
+
     useEffect(() => {
-        if (!isRoomLoad){
-            axios.get(import.meta.env.VITE_BACKEND_URL+"/api/rooms",{
-                headers:{
-                    Authorization:"Bearer " + token
+        if (!isRoomLoad) {
+            axios.get(import.meta.env.VITE_BACKEND_URL + "/api/rooms", {
+                headers: {
+                    Authorization: "Bearer " + token
                 }
-            }).then((result)=>{
+            }).then((result) => {
                 setRooms(result.data.result);
                 setRoomLoad(true);
 
-            }).catch((err)=>{
+            }).catch((err) => {
                 console.log(err);
             })
-        }else {
-            setRoomLoad(false);
         }
-
-    }, [setRoomLoad, token]);
+    }, [isRoomLoad, token]);
 
     function deleteFeature(roomId){
         if (isChecked===false) {
@@ -48,13 +50,25 @@ function Rooms(){
             axios
                 .get(import.meta.env.VITE_BACKEND_URL+"/api/featured/"+roomId)
                 .then((result) => {
-                    console.log("Feature fetched:", result);
+                    console.log(result);
                 })
                 .catch((err) => {
-                    console.error("Error fetching feature:", err);
+                    console.error(err);
                 });
             return;
         }
+    }
+
+    function deleteRoom(roomId){
+        axios
+            .delete(import.meta.env.VITE_BACKEND_URL+"/api/rooms/"+roomId)
+            .then((result) => {
+                console.log(result);
+                setRoomLoad(false)
+            })
+            .catch((err) => {
+                console.error(err);
+            });
     }
 
     return(
@@ -111,11 +125,16 @@ function Rooms(){
                                         </label>
                                     </div>
 
-                                    <button
+                                    <button onClick={()=>{
+                                        setIsRoomEditModelOpen(true)
+                                    }}
                                         className="w-7 mx-3 h-5 bg-fuchsia-900 text-amber-50 rounded-xl hover:bg-fuchsia-700">
                                         <span className="flex justify-center"><RiEdit2Fill/></span>
                                     </button>
                                     <button
+                                        onClick={()=>{
+                                            deleteRoom(room.roomId)
+                                        }}
                                         className="w-7 h-5 bg-red-700 mx-5 text-amber-50 rounded-2xl hover:bg-red-600">
                                         <span className="flex justify-center"><RiDeleteBin5Fill/></span>
                                     </button>
@@ -127,6 +146,16 @@ function Rooms(){
                     </tbody>
                 </table>
             </div>
+            {
+                isRoomEditModelOpen && (
+                    <div className="h-[100vh] w-screen fixed top-0 bg-fuchsia-50 opacity-90">
+                        <RoomEdit  closeModel={() => {
+                            setIsRoomEditModelOpen(false)
+                        }}/>
+
+                    </div>
+                )
+            }
 
         </>
     )

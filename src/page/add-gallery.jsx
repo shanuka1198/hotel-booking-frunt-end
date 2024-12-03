@@ -33,9 +33,8 @@ function EditGallery(props){
         const url=supabase.storage.from("images").getPublicUrl(image.name);
         setImageLink(url.data.publicUrl);
         console.log(imageLink)
-
-
     }
+
 
     const imageItem={
         name,

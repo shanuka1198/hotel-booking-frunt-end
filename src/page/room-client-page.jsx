@@ -3,6 +3,7 @@ import { FaChevronLeft } from "react-icons/fa6";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import {useLocation} from "react-router-dom";
+import {supabase, uploadSupabase} from "../util/supabase.js";
 
 
 function RoomClientPage() {
@@ -14,6 +15,8 @@ function RoomClientPage() {
     const [image, setImage] = useState([]);
     // const [roomId,setRoomId]=useState(null);
     const token = localStorage.getItem("token");
+
+
 
     const name=location.state.name;
 
@@ -39,21 +42,11 @@ function RoomClientPage() {
 
     }, [setRoomLoad, token]);
 
-    // const images=[];
+
 
 
 
     console.log(image);
-
-
-
-    // const handlePrev = () => {
-    //     setCurrentImageIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
-    // };
-    //
-    // const handleNext = () => {
-    //     setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    // };
 
 
     return (
@@ -67,7 +60,6 @@ function RoomClientPage() {
 
                     <div className="relative w-[350px] h-[250px]">
                         <img
-
                             id="slideshow-image"
                             src=""
                             alt="Room Photo"
