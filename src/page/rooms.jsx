@@ -2,6 +2,8 @@ import {RiDeleteBin5Fill, RiEdit2Fill} from "react-icons/ri";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import RoomEdit from "./room-edit.jsx";
+import {IoIosAddCircle} from "react-icons/io";
+import RoomAdd from "./room-add.jsx";
 
 
 
@@ -10,6 +12,8 @@ function Rooms(){
     const [rooms,setRooms]=useState([]);
     const [isRoomLoad,setRoomLoad]=useState(false)
     const [isRoomEditModelOpen,setIsRoomEditModelOpen]=useState(false);
+    const [isRoomAddModelOpen,setIsRoomAddModelOpen]=useState(false);
+    const [activeRoom,setActiveRoom]=useState(null);
     const token=localStorage.getItem("token");
 
     let isChecked;
@@ -88,7 +92,7 @@ function Rooms(){
                     </tr>
                     </thead>
                     <tbody className="text-gray-700 text-sm font-light">
-                    {rooms.map((room,index)=> (
+                    {rooms.map((room, index) => (
                         <tr key={index}
                             className="border-b border-gray-200 hover:bg-gray-100">
                             <td className="py-3 px-6 text-left whitespace-nowrap">{room.roomId}</td>
@@ -114,25 +118,28 @@ function Rooms(){
                                             <input
                                                 type="checkbox"
                                                 onChange={(e) => {
-                                                   isChecked=e.target.checked;
+                                                    isChecked = e.target.checked;
                                                     deleteFeature(room.roomId);
                                                 }}
                                                 id="toggle"
                                                 className="sr-only peer"
                                             />
-                                            <div className="block w-8 h-4 bg-gray-300 rounded-full peer-checked:bg-fuchsia-700"></div>
-                                            <div className="absolute top-0.5 left-0.5 w-3 h-3 bg-white rounded-full transition-transform duration-300 peer-checked:translate-x-4"></div>
+                                            <div
+                                                className="block w-8 h-4 bg-gray-300 rounded-full peer-checked:bg-fuchsia-700"></div>
+                                            <div
+                                                className="absolute top-0.5 left-0.5 w-3 h-3 bg-white rounded-full transition-transform duration-300 peer-checked:translate-x-4"></div>
                                         </label>
                                     </div>
 
-                                    <button onClick={()=>{
+                                    <button onClick={() => {
                                         setIsRoomEditModelOpen(true)
+                                        setActiveRoom(room);
                                     }}
-                                        className="w-7 mx-3 h-5 bg-fuchsia-900 text-amber-50 rounded-xl hover:bg-fuchsia-700">
+                                            className="w-7 mx-3 h-5 bg-fuchsia-900 text-amber-50 rounded-xl hover:bg-fuchsia-700">
                                         <span className="flex justify-center"><RiEdit2Fill/></span>
                                     </button>
                                     <button
-                                        onClick={()=>{
+                                        onClick={() => {
                                             deleteRoom(room.roomId)
                                         }}
                                         className="w-7 h-5 bg-red-700 mx-5 text-amber-50 rounded-2xl hover:bg-red-600">
@@ -146,11 +153,32 @@ function Rooms(){
                     </tbody>
                 </table>
             </div>
+            <div className="fixed bottom-32 right-32">
+                <button onClick={() => {
+                    setIsRoomAddModelOpen(true);
+                }} className="flex rounded-2xl text-6xl text-fuchsia-950 hover:text-fuchsia-800 shadow shadow-black">
+                    <IoIosAddCircle/>
+                </button>
+            </div>
+
             {
                 isRoomEditModelOpen && (
                     <div className="h-[100vh] w-screen fixed top-0 bg-fuchsia-50 opacity-90">
-                        <RoomEdit  closeModel={() => {
+                        <RoomEdit closeModel={() => {
                             setIsRoomEditModelOpen(false)
+                        }} roomId={activeRoom.roomId} category={activeRoom.category} maxGuests={activeRoom.maxGuests}
+                                  Available={activeRoom.available} Photos={activeRoom.photos} specialDescription={activeRoom.specialDescription}
+                                  notes={activeRoom.notes}
+                        />
+
+                    </div>
+                )
+            }
+            {
+                isRoomAddModelOpen && (
+                    <div className="h-[100vh] w-screen fixed top-0 bg-fuchsia-50 opacity-90">
+                        <RoomAdd closeModel={() => {
+                            setIsRoomAddModelOpen(false)
                         }}/>
 
                     </div>

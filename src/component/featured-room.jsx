@@ -32,7 +32,7 @@ function FeaturedRoom() {
                                 className="w-[300px] h-[420px] max-w-[100%] shadow-black rounded-lg shadow-lg bg-white card-animate-slide"
                             >
                                 <img
-                                    src="public/header/place2.jpg"
+                                    src={room.photos}
                                     alt="Category Image"
                                     className="w-full h-[200px] object-cover rounded-t-lg"
                                 />
