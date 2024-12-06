@@ -34,7 +34,7 @@ function FeaturedRoom() {
                         {rooms.map((room, index) => (
                             <div
                                 key={index}
-                                className="w-[300px] h-[420px] max-w-[100%] shadow-black rounded-lg shadow-lg bg-white card-animate-slide"
+                                className="w-[300px] h-[420px] max-w-[100%] shadow-xl rounded-lg border bg-white card-animate-slide"
                             >
                                 <img
                                     src={room.photos}

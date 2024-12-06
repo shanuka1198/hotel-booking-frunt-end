@@ -10,6 +10,7 @@ import RoomClientPage from "./page/room-client-page.jsx";
 import ContactUs from "./page/contact-us.jsx";
 import RoomEdit from "./page/room-edit.jsx";
 import RoomPage from "./page/room-page.jsx";
+import HotelDetails from "./component/hotel-details.jsx";
 
 
 
@@ -30,6 +31,7 @@ function App() {
                   <Route path="/contact-us" element={<ContactUs/>}></Route>
                   <Route path="/edit-room" element={<RoomEdit/>}></Route>
                   <Route path="/rooms/room-page" element={<RoomPage/>}></Route>
+                  <Route path="/hotel" element={<HotelDetails/>}></Route>
                   <Route path="/*" element={
                       <div>404</div>
                   }></Route>

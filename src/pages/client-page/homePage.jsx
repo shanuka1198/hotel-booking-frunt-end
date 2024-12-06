@@ -6,6 +6,7 @@ import {useState} from "react";
 import { RxDoubleArrowDown } from "react-icons/rx";
 import FeaturedRoom from "../../component/featured-room.jsx";
 import {useNavigate} from "react-router-dom";
+import HotelDetails from "../../component/hotel-details.jsx";
 
 function HomePage() {
     const token=localStorage.getItem("token");
@@ -108,7 +109,7 @@ function HomePage() {
             </div>
 
             {isCardLoad && (
-                <div  className="w-full h-screen my-[100px] bg-white">
+                <div className="w-full h-screen my-[100px] bg-white">
                     <div className="w-full h-[330px] rounded-br-full rounded-tl-full bg-fuchsia-900 bg-opacity-50">
                         <div className=" mx-[60px] flex flex-col justify-center">
                             <h1 className="text-2xl text-black font-serif">OUR</h1>
@@ -117,7 +118,8 @@ function HomePage() {
                         </div>
                         <CategoryCard/>
                     </div>
-                    <div className=" my-[250px] w-full h-[500px] bg-fuchsia-300 rounded-3xl bg-opacity-50 overflow-hidden">
+                    <div
+                        className=" my-[250px] w-full h-[500px] bg-fuchsia-100 shadow-xl rounded-3xl overflow-hidden">
                         <div className=" mx-[60px]  flex-col justify-center">
                             <h1 className="text-2xl text-black font-serif text-end">FEATURED</h1>
                             <h1 className="text-6xl text-fuchsia-800 font-serif text-end">ROOMS</h1>
@@ -127,6 +129,10 @@ function HomePage() {
                             <FeaturedRoom/>
                         </div>
                     </div>
+                    <div className="relative bg-fuchsia-100 shadow-xl mx-5 w-[1200px] rounded-3xl  h-[550px] ">
+                        <HotelDetails/>
+                    </div>
+                    <div className="w-full  my-[120px] h-1 bg-fuchsia-900"></div>
                 </div>
             )
             }

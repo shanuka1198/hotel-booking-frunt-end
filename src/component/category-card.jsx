@@ -37,7 +37,7 @@ function CategoryCard(){
                 {category.map((categorys, index) => (
                     <div
                         key={index}
-                        className="bg-white w-[300px]  h-[380px] shadow-black rounded-lg shadow-lg overflow-hidden mx-auto
+                        className="bg-white w-[300px] border  h-[380px] rounded-lg shadow-xl overflow-hidden mx-auto
                         transition-all duration-300 ease-in-out transform hover:scale-105">
                         <img
                             src={categorys.image}
