@@ -1,11 +1,13 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
+import {useNavigate} from "react-router-dom";
 
 
 
 function FeaturedRoom() {
         const [rooms, setRooms] = useState([]);
         const [isRoomLoad, setRoomLoad] = useState(false);
+        const navigate=useNavigate();
 
         useEffect(() => {
             if (!isRoomLoad) {
@@ -21,6 +23,9 @@ function FeaturedRoom() {
             }
         }, [isRoomLoad]);
 
+    function navigateRoomPage(){
+        navigate("/rooms/room-page")
+    }
         return (
             <>
                 <div className="w-screen">
@@ -49,7 +54,9 @@ function FeaturedRoom() {
                                         <span className="font-bold text-fuchsia-700">Special Description: </span>
                                         {room.specialDescription}
                                     </p>
-                                    <button
+                                    <button onClick={()=>{
+                                        navigateRoomPage()
+                                    }}
                                         className="w-full bg-fuchsia-900 text-white py-2 rounded-md hover:bg-fuchsia-700 focus:outline-none focus:ring-2 focus:ring-fuchsia-500"
                                     >
                                         View Details

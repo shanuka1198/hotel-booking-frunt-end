@@ -1,7 +1,6 @@
 import axios from "axios";
 import {useEffect, useState} from "react";
-import {Link} from "react-router-dom";
-import Menus from "./menus.jsx";
+
 
 function UserData(props) {
     const token = localStorage.getItem("token");

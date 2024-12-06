@@ -1,5 +1,3 @@
-import Menus from "./menus.jsx";
-import Userdata from "./userdata.jsx";
 
 
 function Header(){

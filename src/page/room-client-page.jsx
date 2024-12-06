@@ -2,7 +2,7 @@ import {FaChevronRight} from "react-icons/fa6";
 import {FaChevronLeft} from "react-icons/fa6";
 import {useEffect, useState} from "react";
 import axios from "axios";
-import {useLocation} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 
 
 function RoomClientPage() {
@@ -14,6 +14,7 @@ function RoomClientPage() {
     const [image, setImage] = useState([]);
     const [dateTime, setDateTime] = useState(new Date());
     const monthName = dateTime.toLocaleString("en-US", { month: "long" });
+    const navigate=useNavigate();
     // const [roomId,setRoomId]=useState(null);
     const token = localStorage.getItem("token");
 
@@ -23,7 +24,7 @@ function RoomClientPage() {
 
     useEffect(() => {
         if (!isRoomLoad) {
-            axios.get(import.meta.env.VITE_BACKEND_URL + "/api/rooms/" + name, {
+            axios.get(import.meta.env.VITE_BACKEND_URL + "/api/rooms/category/" + name, {
                 headers: {
                     Authorization: "Bearer " + token
                 }
@@ -52,6 +53,15 @@ function RoomClientPage() {
 
             return () => clearInterval(interval);
         }, []);
+
+
+    function navigateRoomPage(roomId){
+        navigate("/rooms/room-page",{
+            state: {
+                roomId:roomId,
+            },
+        });
+    }
 
     return (
         <>
@@ -115,7 +125,9 @@ function RoomClientPage() {
                                         <span className="font-bold text-fuchsia-700">Notes:</span>{room.notes}
                                     </p>
                                 </div>
-                                <button
+                                <button onClick={()=>{
+                                  navigateRoomPage(room.roomId);
+                                }}
                                     type="submit"
                                     className="rounded-md h-10 my-[100px] bg-fuchsia-700 px-4 py-2 text-white font-semibold shadow-lg hover:bg-fuchsia-500 transition-all duration-300 ease-in-out"
                                 >
