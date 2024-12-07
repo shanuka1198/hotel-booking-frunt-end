@@ -25,13 +25,22 @@ function Feedback(){
             }).catch((err)=>{
                 console.log(err);
             })
-        }else {
-            setFeedbackLoad(false);
         }
 
         }, [isFeedbackLoad, token]);
 
-
+function deleteFeedback(email){
+    axios.delete(import.meta.env.VITE_BACKEND_URL+"/api/feedback/"+email,{
+        headers:{
+            Authorization:"Bearer " + token
+        }
+    }).then((result)=>{
+       console.log(result)
+        setFeedbackLoad(false);
+    }).catch((err)=>{
+        console.log(err);
+    })
+}
 
     return(
         <>
@@ -59,7 +68,10 @@ function Feedback(){
                                 {feedbacks.visible.toString()}
                             </td>
                             <td className="py-3 px-6 text-left flex">
-                                <button className="w-7 h-5 bg-red-700 mx-5 text-amber-50 rounded-2xl hover:bg-red-600">
+                                <button onClick={()=>{
+                                    deleteFeedback(feedbacks.email)
+                                }}
+                                    className="w-7 h-5 bg-red-700 mx-5 text-amber-50 rounded-2xl hover:bg-red-600">
                             <span className="flex justify-center">
                                 <RiDeleteBin5Fill/>
                             </span>

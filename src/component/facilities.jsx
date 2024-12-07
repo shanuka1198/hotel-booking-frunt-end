@@ -21,8 +21,7 @@ function Facilities(){
                                 their<br/>
                                 heart’s content at our exclusive shopping arcade. Discover all this and more at<br/>
                                 Anantaya Resort & Spa, catering to your most dearest desires. Your comfort and
-                                convenience<br/>
-                                is utmost in our mind, always.</p>
+                                convenience is utmost in our mind, always.</p>
 
                             <div className="my-5 text">
                                 <h1 className="text-4xl my-4">GYM</h1>

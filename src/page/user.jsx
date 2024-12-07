@@ -33,7 +33,7 @@ function User(){
         }
         }, [userIsLoaded,token]);
 
-    function deleteCategory(username){
+    function deleteUser(username){
 
 
         axios.delete(import.meta.env.VITE_BACKEND_URL+"/api/users/"+username,{
@@ -77,7 +77,7 @@ function User(){
                                 <div className="">
 
                                     <button onClick={() => {
-                                        deleteCategory(users.username);
+                                        deleteUser(users.username);
                                     }}
                                             className="w-7 h-5 bg-red-700 mx-5 text-amber-50 rounded-2xl hover:bg-red-600">
                                         <span className="flex justify-center"><RiDeleteBin5Fill/></span>

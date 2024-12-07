@@ -11,6 +11,7 @@ import ContactUs from "./page/contact-us.jsx";
 import RoomEdit from "./page/room-edit.jsx";
 import RoomPage from "./page/room-page.jsx";
 import HotelDetails from "./component/hotel-details.jsx";
+import AllRooms from "./page/all-rooms.jsx";
 
 
 
@@ -32,6 +33,7 @@ function App() {
                   <Route path="/edit-room" element={<RoomEdit/>}></Route>
                   <Route path="/rooms/room-page" element={<RoomPage/>}></Route>
                   <Route path="/hotel" element={<HotelDetails/>}></Route>
+                  <Route path="/all-rooms" element={<AllRooms/>}></Route>
                   <Route path="/*" element={
                       <div>404</div>
                   }></Route>

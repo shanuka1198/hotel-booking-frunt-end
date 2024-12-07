@@ -8,7 +8,8 @@ function RoomTableRow(props){
     const room=props.room;
     // eslint-disable-next-line react/prop-types
     const setIsRoomEditModelOpen=props.setIsRoomEditModelOpen;
-    // const setActiveRoom=props.setActiveRoom;
+    // eslint-disable-next-line react/prop-types
+    const setActiveRoom=props.setActiveRoom;
     // eslint-disable-next-line react/prop-types
     const  deleteRoom=props. deleteRoom;
     // eslint-disable-next-line react/prop-types

@@ -1,4 +1,4 @@
-import {RiDeleteBin5Fill, RiEdit2Fill} from "react-icons/ri";
+
 import {useEffect, useState} from "react";
 import axios from "axios";
 import RoomEdit from "./room-edit.jsx";
@@ -96,7 +96,7 @@ function Rooms(){
                     </thead>
                     <tbody className="text-gray-700 text-sm font-light">
                     {rooms.map((room) => (
-                        <RoomTableRow room={room} deleteRoom={deleteRoom} deleteFeature={deleteFeature} setIsRoomEditModelOpen={setIsRoomEditModelOpen}/>
+                        <RoomTableRow setActiveRoom={setActiveRoom} room={room} deleteRoom={deleteRoom} deleteFeature={deleteFeature} setIsRoomEditModelOpen={setIsRoomEditModelOpen}/>
                     ))}
 
                     </tbody>

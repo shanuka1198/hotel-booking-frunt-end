@@ -12,6 +12,10 @@ function Menus(){
                     <Link to="/about-us">
                         <li className="mx-5 cursor-pointer text-white font-bold hover:underline">About Us</li>
                     </Link>
+
+                    <Link to="/all-rooms">
+                        <li className="mx-5 cursor-pointer text-white font-bold hover:underline">Rooms</li>
+                    </Link>
                 </ul>
 
             </div>
