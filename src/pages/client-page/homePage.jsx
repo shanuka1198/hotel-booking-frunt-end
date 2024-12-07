@@ -7,6 +7,9 @@ import { RxDoubleArrowDown } from "react-icons/rx";
 import FeaturedRoom from "../../component/featured-room.jsx";
 import {useNavigate} from "react-router-dom";
 import HotelDetails from "../../component/hotel-details.jsx";
+import HotelDetailsBar from "../../component/hotel-details-bar.jsx";
+import Facilities from "../../component/facilities.jsx";
+import Footer from "../../component/footer.jsx";
 
 function HomePage() {
     const token=localStorage.getItem("token");
@@ -133,6 +136,16 @@ function HomePage() {
                         <HotelDetails/>
                     </div>
                     <div className="w-full  my-[120px] h-1 bg-fuchsia-900"></div>
+
+                    <div>
+                        <HotelDetailsBar/>
+                    </div>
+                    <div className="my-[350px]">
+                        <Facilities/>
+                    </div>
+                    <div>
+                        <Footer/>
+                    </div>
                 </div>
             )
             }

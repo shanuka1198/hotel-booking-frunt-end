@@ -20,9 +20,9 @@ function RoomPage() {
                     Authorization: "Bearer " + token
                 }
             }).then((result) => {
-                console.log("***")
+
                 console.log(result.data.resultRoom);
-                console.log("***")
+
                 setRooms([result.data.resultRoom]);
 
                 setRoomLoad(true);
