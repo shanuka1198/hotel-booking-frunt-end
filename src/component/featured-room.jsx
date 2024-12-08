@@ -23,8 +23,12 @@ function FeaturedRoom() {
             }
         }, [isRoomLoad]);
 
-    function navigateRoomPage(){
-        navigate("/rooms/room-page")
+    function navigateRoomPage(roomId){
+        navigate("/rooms/featured-rooms",{
+            state:{
+                roomId:roomId
+            }
+        })
     }
         return (
             <>
@@ -55,7 +59,7 @@ function FeaturedRoom() {
                                         {room.specialDescription}
                                     </p>
                                     <button onClick={()=>{
-                                        navigateRoomPage()
+                                        navigateRoomPage(room.roomId)
                                     }}
                                         className="w-full bg-fuchsia-900 text-white py-2 rounded-md hover:bg-fuchsia-700 focus:outline-none focus:ring-2 focus:ring-fuchsia-500"
                                     >

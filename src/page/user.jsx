@@ -75,7 +75,6 @@ function User(){
                             <td className="py-3 px-6 text-left">{users.disabled.toString()}</td>
                             <td className="py-3 px-6 text-left">
                                 <div className="">
-
                                     <button onClick={() => {
                                         deleteUser(users.username);
                                     }}

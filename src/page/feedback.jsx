@@ -68,10 +68,20 @@ function deleteFeedback(email){
                                 {feedbacks.visible.toString()}
                             </td>
                             <td className="py-3 px-6 text-left flex">
-                                <button onClick={()=>{
+                                <input
+                                    type="checkbox"
+                                    onChange={() => {
+                                        deleteFeature(room.roomId, isFeatured)
+                                        setIsFeatured(!isFeatured)
+                                    }}
+                                    id="toggle"
+                                    className="sr-only peer"
+                                    checked={isFeatured}
+                                />
+                                <button onClick={() => {
                                     deleteFeedback(feedbacks.email)
                                 }}
-                                    className="w-7 h-5 bg-red-700 mx-5 text-amber-50 rounded-2xl hover:bg-red-600">
+                                        className="w-7 h-5 bg-red-700 mx-5 text-amber-50 rounded-2xl hover:bg-red-600">
                             <span className="flex justify-center">
                                 <RiDeleteBin5Fill/>
                             </span>
