@@ -68,16 +68,16 @@ function deleteFeedback(email){
                                 {feedbacks.visible.toString()}
                             </td>
                             <td className="py-3 px-6 text-left flex">
-                                <input
-                                    type="checkbox"
-                                    onChange={() => {
-                                        deleteFeature(room.roomId, isFeatured)
-                                        setIsFeatured(!isFeatured)
-                                    }}
-                                    id="toggle"
-                                    className="sr-only peer"
-                                    checked={isFeatured}
-                                />
+                                {/*<input*/}
+                                {/*    type="checkbox"*/}
+                                {/*    onChange={() => {*/}
+                                {/*        deleteFeature(room.roomId, isFeatured)*/}
+                                {/*        setIsFeatured(!isFeatured)*/}
+                                {/*    }}*/}
+                                {/*    id="toggle"*/}
+                                {/*    className="sr-only peer"*/}
+                                {/*    checked={isFeatured}*/}
+                                {/*/>*/}
                                 <button onClick={() => {
                                     deleteFeedback(feedbacks.email)
                                 }}

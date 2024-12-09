@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
 import {useLocation} from "react-router-dom";
+import CategoryRoomImageSlide from "../component/category-room-image.slide.jsx";
 
 
 function RoomPage() {
@@ -43,12 +44,8 @@ function RoomPage() {
                     rooms.map((room, index) => (
                         <div key={index} className="min-h-screen p-5">
                             <div className="relative">
-                                {/* Display the first photo or a fallback */}
-                                <img
-                                    src={room.photos}
-                                    alt={room.category}
-                                    className="w-full h-96 object-cover"
-                                />
+
+                               <CategoryRoomImageSlide photo={room}/>
                                 <div
                                     className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
                                     <h1 className="text-white text-4xl font-bold">

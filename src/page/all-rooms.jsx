@@ -2,6 +2,7 @@ import {FaChevronLeft, FaChevronRight} from "react-icons/fa6";
 import { useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
 import axios from "axios";
+import RoomImageSlide from "../component/all-room-image-slide.jsx";
 
 function AllRooms(){
 
@@ -37,10 +38,9 @@ function AllRooms(){
             setRoomLoad(false);
         }
 
-    }, [setRoomLoad, token]);
+    }, [isRoomLoad, token]);
 
 
-    console.log(image);
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -74,14 +74,7 @@ function AllRooms(){
                                 <div key={index}
                                      className="bg-fuchsia-100 hover:bg-stone-100 transition-colors bg-opacity-5 border w-full border-gray-300 rounded-lg p-4 flex overflow-hidden">
                                     <div className="relative w-[350px] h-[250px]">
-                                        <img
-                                            id="slideshow-image"
-                                            src="public/header/place2.jpg"
-                                            alt="Room Photo"
-                                            className="w-full h-64 object-cover rounded-lg"
-                                        />
-
-
+                                       <RoomImageSlide photo={room}/>
                                         <button
                                             className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-fuchsia-900 opacity-50 text-white rounded-full p-2 shadow-lg hover:bg-fuchsia-700"
                                             id="prev-btn"

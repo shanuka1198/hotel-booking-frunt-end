@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 /* 1. Use a more-intuitive box-sizing model */
 *, *::before, *::after {
     box-sizing: border-box;
