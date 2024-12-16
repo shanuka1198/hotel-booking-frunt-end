@@ -64,10 +64,10 @@ function RoomPage() {
                                         <p className="text-gray-600 text-lg mb-6">
                                             {room.specialDescription}
                                         </p>
+                                        <p className="text-gray-600 text-lg mb-6">
+                                            {room.notes}
+                                        </p>
 
-                                        <h3 className="text-xl font-semibold text-gray-700 mb-2">
-                                            Features
-                                        </h3>
 
                                         <div className="flex justify-between items-center">
                                             <button

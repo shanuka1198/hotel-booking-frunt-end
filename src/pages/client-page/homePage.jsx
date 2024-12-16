@@ -10,6 +10,7 @@ import HotelDetails from "../../component/hotel-details.jsx";
 import HotelDetailsBar from "../../component/hotel-details-bar.jsx";
 import Facilities from "../../component/facilities.jsx";
 import Footer from "../../component/footer.jsx";
+import CustomerReviewFront from "../../component/customer-review-front.jsx";
 
 function HomePage() {
     const token=localStorage.getItem("token");
@@ -142,6 +143,9 @@ function HomePage() {
                     </div>
                     <div className="my-[350px]">
                         <Facilities/>
+                    </div>
+                    <div className="">
+                        <CustomerReviewFront/>
                     </div>
                     <div>
                         <Footer/>

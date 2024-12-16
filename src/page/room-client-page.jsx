@@ -64,6 +64,11 @@ function RoomClientPage() {
         });
     }
 
+    const truncateText = (text, wordLimit) => {
+        const words = text.split(" ");
+        return words.length > wordLimit ? words.slice(0, wordLimit).join(" ") + "..." : text;
+    };
+
     return (
         <>
             <div className=" w-full max-h-full">
@@ -113,10 +118,10 @@ function RoomClientPage() {
                                     </p>
                                     <p className="text-gray-700 text-base mb-2">
                             <span
-                                className="font-bold text-fuchsia-700">Special Description:</span>{room.specialDescription}
+                                className="font-bold text-fuchsia-700">Special Description:</span>{truncateText(room.specialDescription, 20)}
                                     </p>
                                     <p className="text-gray-700 text-base mb-4">
-                                        <span className="font-bold text-fuchsia-700">Notes:</span>{room.notes}
+                                        <span className="font-bold text-fuchsia-700">Notes:</span>{truncateText(room.notes, 20)}
                                     </p>
                                 </div>
                                 <button onClick={()=>{
