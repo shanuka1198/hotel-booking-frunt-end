@@ -144,7 +144,7 @@ function HomePage() {
                     <div className="my-[350px]">
                         <Facilities/>
                     </div>
-                    <div className="">
+                    <div>
                         <CustomerReviewFront/>
                     </div>
                     <div>

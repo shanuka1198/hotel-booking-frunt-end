@@ -1,4 +1,19 @@
+
+import {useNavigate} from "react-router-dom";
+
+
 function CustomerReviewFront(){
+
+    const navigate=useNavigate();
+
+    function writeFeedbackModelOPen(){
+        navigate("/reviews")
+    }
+    function feedbackView(){
+        navigate("/view-reviews")
+    }
+
+
     return(
         <>
             <div className="w-full h-[400px] flex justify-center items-center border  border-fuchsia-950">
@@ -13,16 +28,19 @@ function CustomerReviewFront(){
                         <span className="text-gray-600">Write your experience about Anantaya Resort and Spa.</span>
                     </p>
                     <ul>
-                        <div className="w-[150px] text-white rounded-3xl cursor-pointer hover:scale-105 duration-300 ease-in-out transform flex justify-center items-center h-7 bg-fuchsia-900">
-                            <ol>Write Reviews</ol>
-                        </div>
-                        <div className="w-[150px] text-white rounded-3xl cursor-pointer hover:scale-105 duration-300 ease-in-out transform my-5 flex justify-center items-center text-center h-7 bg-fuchsia-900">
-                            <ol>View Reviews</ol>
-                        </div>
+                        <button onClick={()=>{
+                            writeFeedbackModelOPen();
+                        }} className="w-[150px] text-white rounded-3xl cursor-pointer hover:scale-105 duration-300 ease-in-out transform flex justify-center items-center h-7 bg-fuchsia-900">
+                            Write Reviews
+                        </button>
+                        <button onClick={()=>{
+                            feedbackView();
+                        }} className="w-[150px] text-white rounded-3xl cursor-pointer hover:scale-105 duration-300 ease-in-out transform my-5 flex justify-center items-center text-center h-7 bg-fuchsia-900">
+                            View Reviews
+                        </button>
                     </ul>
                 </div>
             </div>
-
         </>
     )
 }

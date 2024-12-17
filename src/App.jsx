@@ -13,6 +13,9 @@ import RoomPage from "./page/room-page.jsx";
 import HotelDetails from "./component/hotel-details.jsx";
 import AllRooms from "./page/all-rooms.jsx";
 import FeaturedInRoom from "./page/featured-in-room.jsx";
+import WriteReviews from "./page/write-reviews.jsx";
+import ViewReveiews from "./page/view-reviews.jsx";
+import ViewReviews from "./page/view-reviews.jsx";
 
 
 
@@ -36,6 +39,8 @@ function App() {
                   <Route path="/hotel" element={<HotelDetails/>}></Route>
                   <Route path="/all-rooms" element={<AllRooms/>}></Route>
                   <Route path="/rooms/featured-rooms" element={<FeaturedInRoom/>}></Route>
+                  <Route path="/reviews" element={<WriteReviews/>}></Route>
+                  <Route path="/view-reviews" element={<ViewReviews/>}></Route>
                   <Route path="/*" element={
                       <div>404</div>
                   }></Route>
