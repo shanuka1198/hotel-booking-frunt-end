@@ -92,7 +92,7 @@ function HomePage() {
                     </div>
                     <div className="flex justify-center my-3">
                         <button onClick={()=>{
-                            setIsCardLoad(true);
+                            window.scrollTo({ top: 680, behavior: "smooth" })
                         }} className="w-[150px] h-9 text-xs border hover:scale-105 duration-300 ease-in-out transform rounded text-blue-700 bg-white border-white">Explore Rooms</button>
                         <button onClick={()=>{
                             navigateContactus();
@@ -112,7 +112,6 @@ function HomePage() {
                 </div>
             </div>
 
-            {isCardLoad && (
                 <div className="w-full h-screen my-[100px] bg-white">
                     <div className="w-full h-[330px] rounded-br-full rounded-tl-full bg-fuchsia-900 bg-opacity-50">
                         <div className=" mx-[60px] flex flex-col justify-center">
@@ -151,8 +150,7 @@ function HomePage() {
                         <Footer/>
                     </div>
                 </div>
-            )
-            }
+
         </>
     )
 }

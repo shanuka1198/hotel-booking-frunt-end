@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
-import {useLocation} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import CategoryRoomImageSlide from "../component/category-room-image.slide.jsx";
 
 
@@ -8,6 +8,7 @@ function RoomPage() {
 
     const [rooms, setRooms] = useState([]);
     const [isRoomLoad, setRoomLoad] = useState(false)
+    const navigate=useNavigate();
     const token = localStorage.getItem("token");
 
     const location = useLocation();
@@ -34,6 +35,7 @@ function RoomPage() {
             })
         }
     }, [isRoomLoad, token]);
+
 
 
 

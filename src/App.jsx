@@ -16,6 +16,7 @@ import FeaturedInRoom from "./page/featured-in-room.jsx";
 import WriteReviews from "./page/write-reviews.jsx";
 import ViewReveiews from "./page/view-reviews.jsx";
 import ViewReviews from "./page/view-reviews.jsx";
+import RoomBooking from "./page/room-booking.jsx";
 
 
 
@@ -41,6 +42,7 @@ function App() {
                   <Route path="/rooms/featured-rooms" element={<FeaturedInRoom/>}></Route>
                   <Route path="/reviews" element={<WriteReviews/>}></Route>
                   <Route path="/view-reviews" element={<ViewReviews/>}></Route>
+                  <Route path="/about-us/booking" element={<RoomBooking/>}></Route>
                   <Route path="/*" element={
                       <div>404</div>
                   }></Route>

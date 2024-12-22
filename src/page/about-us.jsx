@@ -6,8 +6,9 @@ import {useNavigate} from "react-router-dom";
 function AboutUs(){
 
     const navigate=useNavigate();
-    function navigateHome(){
-        navigate("/")
+
+    function roomBookingPage(){
+        navigate("/about-us/booking")
     }
     return(
         <>
@@ -84,7 +85,7 @@ function AboutUs(){
                             Let us make your dream vacation a reality. Experience Anataya Resort Hotel and Spa and create memories that will last a lifetime.
                         </p>
                         <button onClick={()=>{
-                            navigateHome()
+                            roomBookingPage()
                         }} className="px-6 py-3 bg-fuchsia-700 rounded-md hover:bg-fuchsia-600 transition focus:outline-none focus:ring-2 focus:ring-fuchsia-500">
                             Book Now
                         </button>
