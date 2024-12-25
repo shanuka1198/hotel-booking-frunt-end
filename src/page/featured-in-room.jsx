@@ -79,8 +79,7 @@ function FeaturedInRoom(){
                         </div>
                     ))
                 ) : (
-                    <p>No rooms available {rooms.length}</p>  // Fallback if no rooms data is available
-
+                    <p>No rooms available {rooms.length}</p>
                 )}
             </div>
         </>

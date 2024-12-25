@@ -6,7 +6,7 @@ function Footer(){
                     <div className="flex flex-wrap justify-between">
 
                         <div className="w-full md:w-1/3 mb-6 md:mb-0">
-                            <h2 className="text-2xl font-bold text-white">Anantaya Resort & Spa</h2>
+                            <h2 className="text-2xl font-bold text-white">Anantra Resort & Spa</h2>
                         </div>
 
 

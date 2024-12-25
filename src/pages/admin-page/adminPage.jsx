@@ -25,10 +25,10 @@ function AdminPage(){
                 <div className="relative w-[230px] h-screen bg-fuchsia-800 overflow-y-hidden">
                     <div className="my-[40px]">
                         <div>
-                            <img src="https://d17criujoyjthx.cloudfront.net/2016/02/logo.svg"/>
+                            <img src="public/header/Anantra-removebg-preview.png" alt=""/>
                         </div>
                         <ul>
-                            <Link to="/admin/booking">
+                        <Link to="/admin/booking">
                                 <div
                                     className="w-full h-10 flex justify-center items-center rounded-l-2xl my-8 bg-fuchsia-800 hover:bg-fuchsia-200 cursor-pointer">
                                     <li className="flex items-center"><IoMdBookmark />Booking</li>

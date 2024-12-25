@@ -7,8 +7,8 @@ function AboutUs(){
 
     const navigate=useNavigate();
 
-    function roomBookingPage(){
-        navigate("/about-us/booking")
+    function navigateHome(){
+        navigate("/")
     }
     return(
         <>
@@ -25,8 +25,8 @@ function AboutUs(){
                     <div className="max-w-5xl mx-auto text-center">
                         <h2 className="text-3xl font-semibold mb-4">Who We Are</h2>
                         <p className="text-lg text-gray-600 leading-relaxed">
-                            Welcome to <span className="font-bold text-fuchsia-700">Anataya Resort Hotel and Spa</span>,
-                            where luxury meets tranquility. Nestled in the heart of nature, Anataya is your escape to
+                            Welcome to <span className="font-bold text-fuchsia-700">Anatra Resort Hotel and Spa</span>,
+                            where luxury meets tranquility. Nestled in the heart of nature, Anatra is your escape to
                             rejuvenation,
                             offering world-class hospitality, serene surroundings, and unparalleled comfort.
                         </p>
@@ -38,7 +38,7 @@ function AboutUs(){
                     <div className="space-y-6">
                         <h2 className="text-3xl font-semibold">Our Mission</h2>
                         <p className="text-gray-600 leading-relaxed">
-                            At Anataya Resort, our mission is to provide an unforgettable experience for our guests
+                            At Anatra Resort, our mission is to provide an unforgettable experience for our guests
                             by combining
                             exceptional service, elegant accommodations, and holistic wellness offerings. We aim to
                             create a sanctuary
@@ -46,7 +46,7 @@ function AboutUs(){
                         </p>
                         <p className="text-gray-600 leading-relaxed">
                             Whether you're seeking a romantic getaway, a family vacation, or a wellness retreat,
-                            Anataya promises an experience
+                            Anatra promises an experience
                             beyond expectations.
                         </p>
                     </div>
@@ -58,7 +58,7 @@ function AboutUs(){
 
                 <div className="py-12 px-6 md:px-12 lg:px-24">
                     <div className="max-w-6xl mx-auto text-center">
-                        <h2 className="text-3xl font-semibold mb-8">Why Choose Anataya?</h2>
+                        <h2 className="text-3xl font-semibold mb-8">Why Choose Anatra?</h2>
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
                             <div className="p-6 bg-white shadow-lg rounded-lg">
                                 <h3 className="text-xl font-semibold text-fuchsia-700">World-Class Spa</h3>
@@ -82,10 +82,10 @@ function AboutUs(){
                     <div className="max-w-4xl mx-auto text-center">
                         <h2 className="text-3xl font-semibold mb-4">Book Your Escape</h2>
                         <p className="text-lg mb-6">
-                            Let us make your dream vacation a reality. Experience Anataya Resort Hotel and Spa and create memories that will last a lifetime.
+                            Let us make your dream vacation a reality. Experience Anatra Resort Hotel and Spa and create memories that will last a lifetime.
                         </p>
                         <button onClick={()=>{
-                            roomBookingPage()
+                            navigateHome()
                         }} className="px-6 py-3 bg-fuchsia-700 rounded-md hover:bg-fuchsia-600 transition focus:outline-none focus:ring-2 focus:ring-fuchsia-500">
                             Book Now
                         </button>

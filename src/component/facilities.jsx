@@ -20,13 +20,13 @@ function Facilities(){
                                 also enjoy revitalizing wellness treatments in our tranquil spa after splurging to
                                 their<br/>
                                 heart’s content at our exclusive shopping arcade. Discover all this and more at<br/>
-                                Anantaya Resort & Spa, catering to your most dearest desires. Your comfort and
+                                Anatra Resort & Spa, catering to your most dearest desires. Your comfort and
                                 convenience is utmost in our mind, always.</p>
 
                             <div className="my-5 text">
                                 <h1 className="text-4xl my-4">GYM</h1>
                                 <p>Keeping in mind the needs of today’s health conscious traveller,
-                                    Anantaya Resort & Spa Chilaw has its very own state-of-the art
+                                    Anatra Resort & Spa has its very own state-of-the art
                                     fully equipped gym. Be it at the beginning of the day before heading
                                     off on your many adventures or in the evenings when one is looking to unwind,
                                     our modern gym is a great place to work out, stay in shape and lose

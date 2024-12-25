@@ -9,14 +9,13 @@ import GalleryUi from "./page/gallery-ui.jsx";
 import RoomClientPage from "./page/room-client-page.jsx";
 import ContactUs from "./page/contact-us.jsx";
 import RoomEdit from "./page/room-edit.jsx";
-import RoomPage from "./page/room-page.jsx";
 import HotelDetails from "./component/hotel-details.jsx";
 import AllRooms from "./page/all-rooms.jsx";
 import FeaturedInRoom from "./page/featured-in-room.jsx";
 import WriteReviews from "./page/write-reviews.jsx";
-import ViewReveiews from "./page/view-reviews.jsx";
 import ViewReviews from "./page/view-reviews.jsx";
-import RoomBooking from "./page/room-booking.jsx";
+import FeaturedBooking from "./page/featured-booking.jsx";
+import RoomPage from "./page/room-page.jsx";
 
 
 
@@ -42,7 +41,7 @@ function App() {
                   <Route path="/rooms/featured-rooms" element={<FeaturedInRoom/>}></Route>
                   <Route path="/reviews" element={<WriteReviews/>}></Route>
                   <Route path="/view-reviews" element={<ViewReviews/>}></Route>
-                  <Route path="/about-us/booking" element={<RoomBooking/>}></Route>
+                  <Route path="/rooms/room-page/booking" element={<FeaturedBooking/>}></Route>
                   <Route path="/*" element={
                       <div>404</div>
                   }></Route>

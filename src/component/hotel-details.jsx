@@ -11,7 +11,7 @@ function HotelDetails(){
                         <div className="w-full h-0.5 bg-fuchsia-300"></div>
                     </div>
                     <div className="my-12 ">
-                        <p className="font-serif text-sky-950">For all your event requirements, Anantaya Resort and Spa is your go-to destination,
+                        <p className="font-serif text-sky-950">For all your event requirements, Anantra Resort and Spa is your go-to destination,
                             catering to a wide range of occasions, from intimate weddings to grand conferences.
                             Our venue offers a diverse selection of meeting rooms and banquet halls, including a
                             spacious hall capable of accommodating up to 900 guests. Anticipate exceptional

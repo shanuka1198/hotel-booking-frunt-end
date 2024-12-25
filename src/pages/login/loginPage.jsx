@@ -2,7 +2,7 @@ import "./loginPage.css";
 import { useState } from "react";
 import axios from "axios";
 import {Link} from "react-router-dom";
-import AddUser from "../../page/add-user.jsx";
+
 
 function LoginPage() {
     const [email, setEmail] = useState("");
@@ -37,10 +37,10 @@ function LoginPage() {
         <>
             <div className="flex justify-center items-center w-full h-[100vh] pic-bg">
                 <div className="relative text-center p-5 w-[300px] h-[400px] bg-white opacity-80 rounded-2xl">
-                    <div className="h-10 flex w-[200px] mx-[100px]">
-                        <img src="https://d17criujoyjthx.cloudfront.net/2016/02/logo.svg" alt="Logo"/>
+                    <div className="h-[80px] flex w-[300px] mx-[90px]">
+                        <img src="public/header/Anantra-removebg-preview.png" alt="Logo"/>
                     </div>
-                    <h4 className="text-xl font-medium my-5">Login</h4>
+                    <h4 className="text-xl font-medium my-1">Login</h4>
                     <input
                         type="text"
                         placeholder="Input Your Email"

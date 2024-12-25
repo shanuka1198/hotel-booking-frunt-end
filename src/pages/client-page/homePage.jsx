@@ -86,9 +86,9 @@ function HomePage() {
                         </button>
                     </div>
                     <div className="mt-[30px]  text-center">
-                        <h1 className="text-white text-6xl font-bold">Welcome to the Anantaya</h1>
-                        <h2 className="text-amber-50 mt-4">"From breathtaking views to luxurious amenities, book your perfect stay today
-                            <br/>and let your dream vacation begin."</h2>
+                        <h1 className="text-white text-6xl font-bold">Welcome to the Anatra</h1>
+                        <h2 className="text-amber-50 mt-4">From breathtaking views to luxurious amenities, book your perfect stay today
+                            <br/>and let your dream vacation begin.</h2>
                     </div>
                     <div className="flex justify-center my-3">
                         <button onClick={()=>{
